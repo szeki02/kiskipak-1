@@ -1,0 +1,11 @@
+{
+  "meta": {
+    "source": "Synced from the home server (server-data/places) by tools/sync_places.ps1",
+    "coordinates": "Site metres: x east, y north, Building O = 0,0; z = height relative to Building O's ground floor (280.59 m a.s.l.)."
+  },
+  "places": [
+    { "id": "C-001", "position": [-163.3,17], "z": 9.7, "title": "Union Bisztró", "category": "bisztró",
+      "note": "Bisztró a Pannon Egyetem felső campusán, a belső udvar épületében.", "link": "", "author": "", "date": "2026-10-08",
+      "images": [] }
+  ]
+}

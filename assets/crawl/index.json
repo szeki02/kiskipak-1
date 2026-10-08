@@ -1,0 +1,442 @@
+[
+    {
+        "src":  "assets/crawl/P-011.jpg",
+        "w":  180,
+        "h":  240,
+        "id":  "P-011",
+        "title":  "Tetőtéri cluster",
+        "type":  "photo"
+    },
+    {
+        "src":  "assets/crawl/P-013.jpg",
+        "w":  320,
+        "h":  240,
+        "id":  "P-013",
+        "title":  "Kilátás 1",
+        "type":  "photo"
+    },
+    {
+        "src":  "assets/crawl/P-004.jpg",
+        "w":  240,
+        "h":  240,
+        "id":  "P-004",
+        "title":  "Main stair arriving at first floor",
+        "type":  "sketch"
+    },
+    {
+        "src":  "assets/crawl/P-016.jpg",
+        "w":  320,
+        "h":  240,
+        "id":  "P-016",
+        "title":  "Csapat az épület előtt",
+        "type":  "photo"
+    },
+    {
+        "src":  "assets/crawl/P-022.jpg",
+        "w":  320,
+        "h":  240,
+        "id":  "P-022",
+        "title":  "Parkoló kocsik tengere",
+        "type":  "photo"
+    },
+    {
+        "src":  "assets/crawl/S-012.jpg",
+        "w":  240,
+        "h":  240,
+        "id":  "S-012",
+        "title":  "Kolosszus",
+        "type":  "sketch"
+    },
+    {
+        "src":  "assets/crawl/P-024.jpg",
+        "w":  320,
+        "h":  240,
+        "id":  "P-024",
+        "title":  "Kerítésen túl",
+        "type":  "photo"
+    },
+    {
+        "src":  "assets/crawl/P-025.jpg",
+        "w":  320,
+        "h":  240,
+        "id":  "P-025",
+        "title":  "Focipálya",
+        "type":  "photo"
+    },
+    {
+        "src":  "assets/crawl/S-015.jpg",
+        "w":  240,
+        "h":  240,
+        "id":  "S-015",
+        "title":  "Felülvilágító",
+        "type":  "sketch"
+    },
+    {
+        "src":  "assets/crawl/P-026.jpg",
+        "w":  180,
+        "h":  240,
+        "id":  "P-026",
+        "title":  "Fentről le",
+        "type":  "photo"
+    },
+    {
+        "src":  "assets/crawl/P-027.jpg",
+        "w":  180,
+        "h":  240,
+        "id":  "P-027",
+        "title":  "Színek",
+        "type":  "photo"
+    },
+    {
+        "src":  "assets/crawl/S-017.jpg",
+        "w":  240,
+        "h":  240,
+        "id":  "S-017",
+        "title":  "Cigi sarok",
+        "type":  "sketch"
+    },
+    {
+        "src":  "assets/crawl/P-028.jpg",
+        "w":  320,
+        "h":  240,
+        "id":  "P-028",
+        "title":  "Gépészet a homlokzaton",
+        "type":  "photo"
+    },
+    {
+        "src":  "assets/crawl/P-029.jpg",
+        "w":  180,
+        "h":  240,
+        "id":  "P-029",
+        "title":  "Fanni és a csövek",
+        "type":  "photo"
+    },
+    {
+        "src":  "assets/crawl/S-018.jpg",
+        "w":  240,
+        "h":  240,
+        "id":  "S-018",
+        "title":  "Lépcső",
+        "type":  "sketch"
+    },
+    {
+        "src":  "assets/crawl/P-030.jpg",
+        "w":  180,
+        "h":  240,
+        "id":  "P-030",
+        "title":  "Fisheye lépcső",
+        "type":  "photo"
+    },
+    {
+        "src":  "assets/crawl/P-031.jpg",
+        "w":  180,
+        "h":  240,
+        "id":  "P-031",
+        "title":  "Üresen a pad",
+        "type":  "photo"
+    },
+    {
+        "src":  "assets/crawl/S-019.jpg",
+        "w":  240,
+        "h":  240,
+        "id":  "S-019",
+        "title":  "Tömeg",
+        "type":  "sketch"
+    },
+    {
+        "src":  "assets/crawl/P-032.jpg",
+        "w":  180,
+        "h":  240,
+        "id":  "P-032",
+        "title":  "Konzol csomópont",
+        "type":  "photo"
+    },
+    {
+        "src":  "assets/crawl/P-034.jpg",
+        "w":  320,
+        "h":  240,
+        "id":  "P-034",
+        "title":  "Focipálya",
+        "type":  "photo"
+    },
+    {
+        "src":  "assets/crawl/S-020-1.jpg",
+        "w":  240,
+        "h":  240,
+        "id":  "S-020",
+        "title":  "Szögesdrót",
+        "type":  "sketch"
+    },
+    {
+        "src":  "assets/crawl/P-035.jpg",
+        "w":  320,
+        "h":  240,
+        "id":  "P-035",
+        "title":  "Fent és lent",
+        "type":  "photo"
+    },
+    {
+        "src":  "assets/crawl/P-036.jpg",
+        "w":  180,
+        "h":  240,
+        "id":  "P-036",
+        "title":  "Pihi sarok",
+        "type":  "photo"
+    },
+    {
+        "src":  "assets/crawl/S-020-2.jpg",
+        "w":  240,
+        "h":  240,
+        "id":  "S-020",
+        "title":  "Szögesdrót",
+        "type":  "sketch"
+    },
+    {
+        "src":  "assets/crawl/P-037.jpg",
+        "w":  320,
+        "h":  240,
+        "id":  "P-037",
+        "title":  "Pihi sarok 2",
+        "type":  "photo"
+    },
+    {
+        "src":  "assets/crawl/P-038.jpg",
+        "w":  180,
+        "h":  240,
+        "id":  "P-038",
+        "title":  "Főbejárat",
+        "type":  "photo"
+    },
+    {
+        "src":  "assets/crawl/S-021.jpg",
+        "w":  240,
+        "h":  240,
+        "id":  "S-021",
+        "title":  "Hátsó kert",
+        "type":  "sketch"
+    },
+    {
+        "src":  "assets/crawl/P-039.jpg",
+        "w":  180,
+        "h":  240,
+        "id":  "P-039",
+        "title":  "Fák közül a csövek",
+        "type":  "photo"
+    },
+    {
+        "src":  "assets/crawl/P-041.jpg",
+        "w":  180,
+        "h":  240,
+        "id":  "P-041",
+        "title":  "Felülvilágító",
+        "type":  "photo"
+    },
+    {
+        "src":  "assets/crawl/S-033.jpg",
+        "w":  240,
+        "h":  240,
+        "id":  "S-033",
+        "title":  "Vigyázz feléd dől",
+        "type":  "sketch"
+    },
+    {
+        "src":  "assets/crawl/P-042.jpg",
+        "w":  320,
+        "h":  240,
+        "id":  "P-042",
+        "title":  "Hátsó homlokzat",
+        "type":  "photo"
+    },
+    {
+        "src":  "assets/crawl/P-043.jpg",
+        "w":  677,
+        "h":  240,
+        "id":  "P-043",
+        "title":  "Parkoló és épület",
+        "type":  "photo"
+    },
+    {
+        "src":  "assets/crawl/S-050.jpg",
+        "w":  240,
+        "h":  240,
+        "id":  "S-050",
+        "title":  "Soldier",
+        "type":  "sketch"
+    },
+    {
+        "src":  "assets/crawl/P-044.jpg",
+        "w":  320,
+        "h":  240,
+        "id":  "P-044",
+        "title":  "Közösségi kert",
+        "type":  "photo"
+    },
+    {
+        "src":  "assets/crawl/P-045.jpg",
+        "w":  181,
+        "h":  240,
+        "id":  "P-045",
+        "title":  "Perspektíva váltás",
+        "type":  "photo"
+    },
+    {
+        "src":  "assets/crawl/S-051.jpg",
+        "w":  240,
+        "h":  240,
+        "id":  "S-051",
+        "title":  "\"Közösségi tér\"",
+        "type":  "sketch"
+    },
+    {
+        "src":  "assets/crawl/P-046.jpg",
+        "w":  181,
+        "h":  240,
+        "id":  "P-046",
+        "title":  "Túlélő doboz",
+        "type":  "photo"
+    },
+    {
+        "src":  "assets/crawl/P-047.jpg",
+        "w":  181,
+        "h":  240,
+        "id":  "P-047",
+        "title":  "Közösségi konyha",
+        "type":  "photo"
+    },
+    {
+        "src":  "assets/crawl/S-052.jpg",
+        "w":  240,
+        "h":  240,
+        "id":  "S-052",
+        "title":  "Szűkösen",
+        "type":  "sketch"
+    },
+    {
+        "src":  "assets/crawl/P-048.jpg",
+        "w":  181,
+        "h":  240,
+        "id":  "P-048",
+        "title":  "Folyosó/lépcső",
+        "type":  "photo"
+    },
+    {
+        "src":  "assets/crawl/P-049.jpg",
+        "w":  181,
+        "h":  240,
+        "id":  "P-049",
+        "title":  "A Mikró",
+        "type":  "photo"
+    },
+    {
+        "src":  "assets/crawl/S-066.jpg",
+        "w":  169,
+        "h":  240,
+        "id":  "S-066",
+        "title":  "Pihenők",
+        "type":  "sketch"
+    },
+    {
+        "src":  "assets/crawl/P-053.jpg",
+        "w":  181,
+        "h":  240,
+        "id":  "P-053",
+        "title":  "Ülj a földön",
+        "type":  "photo"
+    },
+    {
+        "src":  "assets/crawl/P-054.jpg",
+        "w":  181,
+        "h":  240,
+        "id":  "P-054",
+        "title":  "Senkiföldje",
+        "type":  "photo"
+    },
+    {
+        "src":  "assets/crawl/S-067.jpg",
+        "w":  381,
+        "h":  240,
+        "id":  "S-067",
+        "title":  "Raklap relax",
+        "type":  "sketch"
+    },
+    {
+        "src":  "assets/crawl/P-055.jpg",
+        "w":  180,
+        "h":  240,
+        "id":  "P-055",
+        "title":  "Fentről le_2",
+        "type":  "photo"
+    },
+    {
+        "src":  "assets/crawl/P-056.jpg",
+        "w":  180,
+        "h":  240,
+        "id":  "P-056",
+        "title":  "Co-working",
+        "type":  "photo"
+    },
+    {
+        "src":  "assets/crawl/S-068.jpg",
+        "w":  332,
+        "h":  240,
+        "id":  "S-068",
+        "title":  "Alulról felülről",
+        "type":  "sketch"
+    },
+    {
+        "src":  "assets/crawl/P-057.jpg",
+        "w":  180,
+        "h":  240,
+        "id":  "P-057",
+        "title":  "Közellátó",
+        "type":  "photo"
+    },
+    {
+        "src":  "assets/crawl/P-058.jpg",
+        "w":  180,
+        "h":  240,
+        "id":  "P-058",
+        "title":  "Tanterem",
+        "type":  "photo"
+    },
+    {
+        "src":  "assets/crawl/P-059.jpg",
+        "w":  180,
+        "h":  240,
+        "id":  "P-059",
+        "title":  "Világítás és szemét",
+        "type":  "photo"
+    },
+    {
+        "src":  "assets/crawl/P-060.jpg",
+        "w":  180,
+        "h":  240,
+        "id":  "P-060",
+        "title":  "Közösségi konyha_\"2",
+        "type":  "photo"
+    },
+    {
+        "src":  "assets/crawl/P-061.jpg",
+        "w":  180,
+        "h":  240,
+        "id":  "P-061",
+        "title":  "Közösségi kert madártávlatbl",
+        "type":  "photo"
+    },
+    {
+        "src":  "assets/crawl/P-062.jpg",
+        "w":  180,
+        "h":  240,
+        "id":  "P-062",
+        "title":  "Kék folyosó",
+        "type":  "photo"
+    },
+    {
+        "src":  "assets/crawl/P-069.jpg",
+        "w":  181,
+        "h":  240,
+        "id":  "P-069",
+        "title":  "Közösségi tér",
+        "type":  "photo"
+    }
+]

@@ -1,0 +1,590 @@
+<!doctype html>
+<html lang="hu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>KISKIPAK_1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Schibsted+Grotesk:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="css/style.css">
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+  }
+}
+</script>
+</head>
+<body>
+<header class="hero" id="hero" data-night="false">
+  <div class="lang-toggle lang-toggle--hero notranslate" role="group" aria-label="Nyelv · Language"><button type="button" data-lang="hu" lang="hu" aria-pressed="true">HU</button><button type="button" data-lang="en" lang="en" aria-pressed="false">EN</button></div>
+  <canvas class="hero__scene" id="hero-scene" aria-hidden="true"></canvas>
+  <div class="hero__title">
+    <h1>KISKIPAK<span class="hero__accent">_1</span></h1>
+    <p class="hero__sub">Ötös számú vágóhíd</p>
+  </div>
+  <a class="hero__qr" href="https://claude.ai/artifact/CPGcu4PWuMT1voiNQxuPrB" target="_blank" rel="noopener" aria-label="A weboldal QR-kódja: https://claude.ai/artifact/CPGcu4PWuMT1voiNQxuPrB">
+    <svg viewBox="-4 -4 41 41" shape-rendering="crispEdges" aria-hidden="true"><rect x="-4" y="-4" width="41" height="41" fill="#fdf5ec"/><path fill="#22214a" d="M0 0h7v1h-7zM8 0h4v1h-4zM13 0h2v1h-2zM16 0h1v1h-1zM18 0h1v1h-1zM21 0h1v1h-1zM23 0h1v1h-1zM26 0h7v1h-7zM0 1h1v1h-1zM6 1h1v1h-1zM10 1h1v1h-1zM13 1h2v1h-2zM18 1h3v1h-3zM24 1h1v1h-1zM26 1h1v1h-1zM32 1h1v1h-1zM0 2h1v1h-1zM2 2h3v1h-3zM6 2h1v1h-1zM12 2h1v1h-1zM14 2h5v1h-5zM20 2h5v1h-5zM26 2h1v1h-1zM28 2h3v1h-3zM32 2h1v1h-1zM0 3h1v1h-1zM2 3h3v1h-3zM6 3h1v1h-1zM8 3h1v1h-1zM11 3h2v1h-2zM15 3h3v1h-3zM23 3h2v1h-2zM26 3h1v1h-1zM28 3h3v1h-3zM32 3h1v1h-1zM0 4h1v1h-1zM2 4h3v1h-3zM6 4h1v1h-1zM8 4h1v1h-1zM12 4h2v1h-2zM16 4h2v1h-2zM19 4h1v1h-1zM22 4h2v1h-2zM26 4h1v1h-1zM28 4h3v1h-3zM32 4h1v1h-1zM0 5h1v1h-1zM6 5h1v1h-1zM8 5h3v1h-3zM12 5h1v1h-1zM15 5h1v1h-1zM18 5h1v1h-1zM20 5h1v1h-1zM22 5h1v1h-1zM26 5h1v1h-1zM32 5h1v1h-1zM0 6h7v1h-7zM8 6h1v1h-1zM10 6h1v1h-1zM12 6h1v1h-1zM14 6h1v1h-1zM16 6h1v1h-1zM18 6h1v1h-1zM20 6h1v1h-1zM22 6h1v1h-1zM24 6h1v1h-1zM26 6h7v1h-7zM8 7h5v1h-5zM14 7h1v1h-1zM17 7h5v1h-5zM23 7h1v1h-1zM0 8h1v1h-1zM4 8h1v1h-1zM6 8h6v1h-6zM15 8h3v1h-3zM21 8h1v1h-1zM24 8h6v1h-6zM32 8h1v1h-1zM0 9h6v1h-6zM8 9h1v1h-1zM11 9h1v1h-1zM14 9h1v1h-1zM16 9h3v1h-3zM23 9h1v1h-1zM25 9h1v1h-1zM29 9h2v1h-2zM32 9h1v1h-1zM1 10h4v1h-4zM6 10h2v1h-2zM10 10h1v1h-1zM13 10h3v1h-3zM18 10h1v1h-1zM21 10h1v1h-1zM23 10h2v1h-2zM29 10h1v1h-1zM31 10h1v1h-1zM0 11h1v1h-1zM4 11h1v1h-1zM7 11h4v1h-4zM12 11h2v1h-2zM16 11h1v1h-1zM19 11h1v1h-1zM21 11h1v1h-1zM23 11h3v1h-3zM0 12h3v1h-3zM4 12h1v1h-1zM6 12h4v1h-4zM11 12h1v1h-1zM13 12h1v1h-1zM16 12h1v1h-1zM19 12h1v1h-1zM22 12h1v1h-1zM26 12h4v1h-4zM32 12h1v1h-1zM0 13h1v1h-1zM2 13h4v1h-4zM7 13h4v1h-4zM12 13h1v1h-1zM14 13h1v1h-1zM18 13h5v1h-5zM30 13h1v1h-1zM0 14h1v1h-1zM3 14h2v1h-2zM6 14h2v1h-2zM10 14h1v1h-1zM12 14h4v1h-4zM18 14h1v1h-1zM20 14h1v1h-1zM23 14h1v1h-1zM25 14h5v1h-5zM31 14h1v1h-1zM1 15h4v1h-4zM8 15h2v1h-2zM13 15h1v1h-1zM15 15h3v1h-3zM21 15h2v1h-2zM24 15h3v1h-3zM28 15h1v1h-1zM2 16h1v1h-1zM5 16h2v1h-2zM10 16h1v1h-1zM13 16h2v1h-2zM17 16h1v1h-1zM19 16h1v1h-1zM21 16h3v1h-3zM26 16h1v1h-1zM28 16h4v1h-4zM1 17h2v1h-2zM7 17h2v1h-2zM10 17h3v1h-3zM14 17h1v1h-1zM16 17h1v1h-1zM18 17h1v1h-1zM23 17h1v1h-1zM25 17h1v1h-1zM29 17h2v1h-2zM0 18h1v1h-1zM4 18h1v1h-1zM6 18h1v1h-1zM12 18h1v1h-1zM15 18h1v1h-1zM17 18h1v1h-1zM20 18h6v1h-6zM27 18h1v1h-1zM29 18h1v1h-1zM0 19h2v1h-2zM5 19h1v1h-1zM9 19h1v1h-1zM13 19h2v1h-2zM17 19h2v1h-2zM21 19h3v1h-3zM26 19h2v1h-2zM31 19h1v1h-1zM1 20h1v1h-1zM4 20h3v1h-3zM8 20h1v1h-1zM10 20h1v1h-1zM13 20h1v1h-1zM15 20h1v1h-1zM18 20h5v1h-5zM24 20h1v1h-1zM26 20h2v1h-2zM29 20h1v1h-1zM32 20h1v1h-1zM0 21h2v1h-2zM7 21h3v1h-3zM11 21h3v1h-3zM16 21h1v1h-1zM19 21h1v1h-1zM22 21h1v1h-1zM25 21h1v1h-1zM27 21h1v1h-1zM29 21h3v1h-3zM2 22h2v1h-2zM5 22h2v1h-2zM8 22h2v1h-2zM12 22h1v1h-1zM14 22h1v1h-1zM16 22h2v1h-2zM19 22h1v1h-1zM21 22h4v1h-4zM28 22h1v1h-1zM30 22h2v1h-2zM3 23h1v1h-1zM5 23h1v1h-1zM8 23h4v1h-4zM13 23h1v1h-1zM17 23h5v1h-5zM23 23h1v1h-1zM25 23h2v1h-2zM31 23h1v1h-1zM0 24h4v1h-4zM5 24h4v1h-4zM10 24h1v1h-1zM13 24h3v1h-3zM17 24h1v1h-1zM20 24h10v1h-10zM31 24h2v1h-2zM8 25h1v1h-1zM10 25h1v1h-1zM13 25h1v1h-1zM15 25h1v1h-1zM17 25h2v1h-2zM24 25h1v1h-1zM28 25h1v1h-1zM30 25h1v1h-1zM0 26h7v1h-7zM8 26h1v1h-1zM12 26h2v1h-2zM15 26h2v1h-2zM18 26h1v1h-1zM20 26h1v1h-1zM22 26h1v1h-1zM24 26h1v1h-1zM26 26h1v1h-1zM28 26h2v1h-2zM31 26h1v1h-1zM0 27h1v1h-1zM6 27h1v1h-1zM9 27h2v1h-2zM14 27h2v1h-2zM19 27h4v1h-4zM24 27h1v1h-1zM28 27h1v1h-1zM31 27h2v1h-2zM0 28h1v1h-1zM2 28h3v1h-3zM6 28h1v1h-1zM8 28h2v1h-2zM11 28h1v1h-1zM14 28h1v1h-1zM16 28h1v1h-1zM20 28h1v1h-1zM22 28h1v1h-1zM24 28h6v1h-6zM31 28h2v1h-2zM0 29h1v1h-1zM2 29h3v1h-3zM6 29h1v1h-1zM9 29h1v1h-1zM11 29h2v1h-2zM18 29h4v1h-4zM24 29h1v1h-1zM26 29h5v1h-5zM0 30h1v1h-1zM2 30h3v1h-3zM6 30h1v1h-1zM9 30h5v1h-5zM15 30h1v1h-1zM21 30h2v1h-2zM24 30h1v1h-1zM26 30h3v1h-3zM0 31h1v1h-1zM6 31h1v1h-1zM13 31h1v1h-1zM15 31h5v1h-5zM21 31h1v1h-1zM23 31h4v1h-4zM0 32h7v1h-7zM8 32h1v1h-1zM10 32h1v1h-1zM14 32h1v1h-1zM16 32h2v1h-2zM19 32h3v1h-3zM23 32h2v1h-2zM30 32h1v1h-1zM32 32h1v1h-1z"/></svg>
+    <span class="hero__qr-cap">Nyisd meg telefonon</span>
+  </a>
+  <p class="hero__clock" aria-hidden="true"><span>series.005</span><span>O épület · Veszprém</span><span id="hero-clock">--:--</span></p>
+  <a class="hero__down" href="#topics">Tovább a témákhoz <span aria-hidden="true">↓</span></a>
+  <div class="hero__crawl" id="hero-crawl" role="img" aria-label="Fotók és vázlatok a helyszíni bejárásról, fekete-fehérben">
+    <div class="hero__track" id="hero-track"></div>
+  </div>
+</header>
+<div class="page">
+
+  <div class="lang-toggle lang-toggle--bar notranslate" role="group" aria-label="Nyelv · Language"><button type="button" data-lang="hu" lang="hu" aria-pressed="true">HU</button><button type="button" data-lang="en" lang="en" aria-pressed="false">EN</button></div>
+  <nav class="topics" id="topics" aria-label="Témák">
+    <a class="topic is-active" href="#local-site" data-topic="local-site" aria-current="page"><span class="topic__no">01</span><span class="topic__name">Helyszín megismerése</span></a>
+    <a class="topic" href="#docs" data-topic="docs"><span class="topic__no">02</span><span class="topic__name">Műszaki dokumentáció</span></a>
+    <a class="topic" href="#culture" data-topic="culture"><span class="topic__no">03</span><span class="topic__name">Kulturális élet</span></a>
+    <a class="topic" href="#commuting" data-topic="commuting"><span class="topic__no">04</span><span class="topic__name">Célcsoport meghatározás</span></a>
+    <a class="topic" href="#programme" data-topic="programme"><span class="topic__no">05</span><span class="topic__name">Funkcionális program</span></a>
+  </nav>
+
+  <main id="local-site" class="topic-body">
+    <div class="section-head">
+      <h2>Környezet és helyszíni felmérés</h2>
+      <p>Az O épület és környezete 330 m-es körzetben, nagyjából ötperces sétatávolságon belül, a helyszínen rögzítettekkel együtt: a kék jelölők azt mutatják, honnan fotóztunk, a zöldek azt, honnan vázoltunk. Válassz szintet az épület elmetszéséhez, majd kattints egy jelölőre, egy felvételre vagy az O épület bármely részére. A színes vonalak a telek mellett elhaladó buszvonalak; dátumot és időpontot választva a napállás és az árnyékok is megjelennek.</p>
+    </div>
+
+    <section class="viewer viewer--context" aria-label="Az O épület 3D környezete">
+      <div class="stage" id="ctx-stage">
+        <canvas id="ctx-scene" aria-label="3D telekmodell az O épület körül"></canvas>
+        <div class="stage__loading" id="ctx-loading">
+          <span class="spinner" aria-hidden="true"></span>
+          <span id="ctx-loading-text">A telekmodell betöltése…</span>
+        </div>
+        <div class="stage__tag" id="ctx-sun-tag">Nap</div>
+        <div class="stage__tag stage__tag--level" id="ctx-level-tag" hidden>Teljes épület</div>
+        <div class="labels" id="ctx-labels" aria-hidden="true"></div>
+        <div class="tooltip" id="ctx-tooltip" hidden></div>
+        <svg class="north" id="ctx-north" viewBox="-20 -20 40 40" aria-label="Északi irány">
+          <circle r="17" class="north__ring"/>
+          <path d="M0 -13 L6 7 L0 3 L-6 7 Z" class="north__arrow"/>
+          <text y="-21" text-anchor="middle" class="north__n">É</text>
+        </svg>
+        <div class="stage__cam" role="group" aria-label="Kamera">
+          <button type="button" id="ctx-cam-aerial" class="chip is-on">Madártávlat</button>
+          <button type="button" id="ctx-cam-plan" class="chip">Alaprajz</button>
+          <button type="button" id="ctx-cam-close" class="chip">Épület</button>
+        </div>
+      </div>
+
+      <aside class="panel">
+        <fieldset class="block">
+          <legend class="label">Felmérés · az O épület szintje</legend>
+          <div class="segmented" role="radiogroup" id="level-switch">
+            <button type="button" role="radio" data-level="whole" aria-checked="true">Teljes<small>épület</small></button>
+            <button type="button" role="radio" data-level="ground" aria-checked="false">Földszint<small>±0,00</small></button>
+            <button type="button" role="radio" data-level="first" aria-checked="false">Emelet<small>+3,90</small></button>
+            <button type="button" role="radio" data-level="roof" aria-checked="false">Tető<small>+7,22</small></button>
+          </div>
+          <label class="toggle"><input type="checkbox" id="show-photos" checked><span class="glyph glyph--photo" aria-hidden="true"></span>Fotók helye</label>
+          <label class="toggle"><input type="checkbox" id="show-sketches" checked><span class="glyph glyph--sketch" aria-hidden="true"></span>Vázlatok helye</label>
+          <label class="toggle"><input type="checkbox" id="show-heat"><span class="glyph glyph--heat" aria-hidden="true"></span>Lefedettségi hőtérkép</label>
+          <div class="heat" id="heat-legend" hidden>
+            <div class="ramp" aria-hidden="true"></div>
+            <div class="ramp__scale"><span>1 nézet</span><span id="heat-max"></span></div>
+          </div>
+        </fieldset>
+
+        <div class="block editor-bar" id="editor-bar" hidden>
+          <p class="label">Szerkesztő · a változások mindenkinél mentődnek</p>
+          <div class="row">
+            <button type="button" class="btn" id="ed-new-photo">+ Fotópont</button>
+            <button type="button" class="btn" id="ed-new-sketch">+ Vázlatpont</button>
+            <button type="button" class="linkbtn danger" id="ed-clear-samples" hidden>Mintafelvételek eltávolítása</button>
+          </div>
+          <p class="hint ed-status" id="ed-status" aria-live="polite"></p>
+        </div>
+
+        <div class="block stats" id="stats" aria-live="polite"></div>
+
+        <div class="block detail" id="detail">
+          <p class="label">Kijelölés</p>
+          <p class="hint">Kattints egy jelölőre a fotó vagy vázlat megtekintéséhez. Kattints az O épület bármely részére az azonosítójáért és az azt mutató felvételekért.</p>
+        </div>
+
+        <details class="block fold" id="records-fold" open>
+          <summary class="label">Felvételek ezen a szinten <span class="fold__count" id="records-count"></span></summary>
+          <ol class="records" id="records"></ol>
+        </details>
+
+        <fieldset class="block">
+          <legend class="label">Nap · Veszprém, é. sz. 47,09°</legend>
+          <div class="chips-row" id="ctx-dates" role="group" aria-label="Dátum">
+            <button type="button" class="chip" data-date="03-20">márc. 20.</button>
+            <button type="button" class="chip is-on" data-date="06-21">jún. 21.</button>
+            <button type="button" class="chip" data-date="09-22">szept. 22.</button>
+            <button type="button" class="chip" data-date="12-21">dec. 21.</button>
+          </div>
+          <label class="select-row" for="ctx-date">Dátum <input type="date" id="ctx-date"></label>
+          <div class="time-row">
+            <button type="button" class="play" id="ctx-play" aria-label="A nap lejátszása">▶</button>
+            <input type="range" id="ctx-time" min="0" max="1439" step="5" value="900" aria-label="Napszak">
+            <output id="ctx-time-out" for="ctx-time">15:00</output>
+          </div>
+          <dl class="kv kv--sun" id="ctx-sun-data"></dl>
+        </fieldset>
+
+        <fieldset class="block">
+          <legend class="label">Megjelenítés</legend>
+          <label class="toggle"><input type="checkbox" id="ctx-show-transit" checked><span class="glyph glyph--line" aria-hidden="true"></span>Tömegközlekedés</label>
+          <label class="toggle"><input type="checkbox" id="ctx-show-buildings" checked><span class="glyph glyph--box" aria-hidden="true"></span>Szomszédos épületek</label>
+          <label class="toggle"><input type="checkbox" id="ctx-show-trees" checked><span class="glyph glyph--tree" aria-hidden="true"></span>Fák</label>
+          <label class="toggle"><input type="checkbox" id="ctx-show-fence" checked><span class="glyph glyph--fence" aria-hidden="true"></span>Kampuszkerítés</label>
+          <label class="toggle"><input type="checkbox" id="ctx-show-furniture" checked><span class="glyph glyph--bench" aria-hidden="true"></span>Utcabútorok és közösségi kert</label>
+          <label class="toggle"><input type="checkbox" id="ctx-show-people" checked><span class="glyph glyph--person" aria-hidden="true"></span>Beszélgető emberek</label>
+          <label class="toggle"><input type="checkbox" id="ctx-show-contours" checked><span class="glyph glyph--contour" aria-hidden="true"></span>Szintvonalak, 1 m</label>
+          <label class="toggle"><input type="checkbox" id="ctx-show-sunpath" checked><span class="glyph glyph--sun" aria-hidden="true"></span>Napút</label>
+        </fieldset>
+
+        <div class="block">
+          <p class="label">Buszvonalak 330 m-en belül</p>
+          <ul class="lines" id="ctx-lines"></ul>
+        </div>
+
+        <div class="block">
+          <p class="label">Legközelebbi megállók</p>
+          <ol class="stops" id="ctx-stops"></ol>
+        </div>
+      </aside>
+    </section>
+    <p class="sample-note">A terep 30 m-es magassági rácsból származik (AWS Terrain Tiles), ezért az általános lejtést mutatja, nem a helyi részleteket. A földszint ±0,00 szintje ≈ <span id="ctx-ffl">280,6</span> m tengerszint feletti magasságon van. Utcák, épületek és útvonalak: OpenStreetMap- és V-Busz-adatok, az ingázási modellen keresztül. Az épületmagasságok az OpenStreetMap szintszámaiból származnak, ahol meg vannak adva, máshol az épület típusából és alapterületéből becsültük őket; vidd az egeret egy épület fölé, hogy lásd, melyik. A fákat a Meta / WRI 1 m-es, műholdképekből készült lombkorona-magasság térképéből azonosítottuk. A térkép jól helyezte el a lombkoronákat, de a magasságukat jóval alulbecsülte, ezért a magasságokat a tetőről készült fotóink alapján javítottuk; az O épülettől északra álló magas, keskeny fákat kézzel rajzoltuk újra. Ugyanezek a fotók pontosították a Polinszky Terem tömegét, a Wartha Vince utcai magastetőket és a két parkolót; további tizenkét szomszédos ház tetőformája műholdképek alapján készült.</p>
+
+    <div class="section-head section-head--spaced" id="gallery-head">
+      <h2>Galéria</h2>
+      <p>A felmérés összes fotója és vázlata. A sraffozott kártyák olyan felvételek, amelyekhez még nem töltöttek fel képet. Nyiss meg egy kártyát a nagy nézethez, vagy hogy megtaláld a fenti modellen.</p>
+    </div>
+    <div class="gallery-bar">
+      <div class="chips-row" role="group" aria-label="Típus" id="gal-type">
+        <button type="button" class="chip is-on" data-type="all" aria-pressed="true">Mind</button>
+        <button type="button" class="chip" data-type="photo" aria-pressed="false"><span class="glyph glyph--photo" aria-hidden="true"></span>Fotók</button>
+        <button type="button" class="chip" data-type="sketch" aria-pressed="false"><span class="glyph glyph--sketch" aria-hidden="true"></span>Vázlatok</button>
+      </div>
+      <div class="chips-row" role="group" aria-label="Szint" id="gal-level">
+        <button type="button" class="chip is-on" data-level="all" aria-pressed="true">Minden szint</button>
+        <button type="button" class="chip" data-level="ground" aria-pressed="false">Földszint</button>
+        <button type="button" class="chip" data-level="first" aria-pressed="false">Emelet</button>
+        <button type="button" class="chip" data-level="roof" aria-pressed="false">Tető</button>
+        <button type="button" class="chip" data-level="site" aria-pressed="false">Telek</button>
+        <button type="button" class="chip" data-level="unplaced" aria-pressed="false">Nincs elhelyezve</button>
+      </div>
+      <div class="chips-row" role="group" aria-label="Szerző" id="gal-author"></div>
+      <div class="chips-row gallery-upload" id="gal-upload" hidden>
+        <label class="btn">Fotók feltöltése<input type="file" id="gal-up-photos" accept="image/*,.heic,.heif" multiple hidden></label>
+        <label class="btn">Vázlatok feltöltése<input type="file" id="gal-up-sketches" accept="image/*,.heic,.heif,application/pdf" multiple hidden></label>
+      </div>
+      <p class="gallery-count" id="gal-count" aria-live="polite"></p>
+    </div>
+    <ul class="gallery" id="gallery"></ul>
+
+    <dialog class="lightbox" id="lightbox" aria-labelledby="lb-title">
+      <div class="lightbox__media" id="lb-media"></div>
+      <div class="lightbox__text">
+        <p class="label" id="lb-kind"></p>
+        <h3 id="lb-title"></h3>
+        <p class="meta" id="lb-meta"></p>
+        <p id="lb-note"></p>
+        <div id="lb-thumbs"></div>
+        <div class="lightbox__actions">
+          <button type="button" class="btn" id="lb-show">Megmutatás a modellen</button>
+          <button type="button" class="chip" id="lb-prev" aria-label="Előző felvétel">←</button>
+          <button type="button" class="chip" id="lb-next" aria-label="Következő felvétel">→</button>
+          <button type="button" class="chip" id="lb-close">Bezárás</button>
+        </div>
+      </div>
+    </dialog>
+
+    <p class="sample-note" id="sample-note" hidden><strong>Mintafelvételek.</strong> A fotó- és vázlatjelölők helykitöltő bejegyzések a <code>data/observations.json</code> fájlban. Cseréld le őket a saját felmérési felvételeitekre; a formátum lent található.</p>
+
+    <details class="howto">
+      <summary>Felmérési felvételek hozzáadása</summary>
+      <div class="howto__body">
+        <p>A képek az <code>assets/photos/</code> (fotók) és az <code>assets/sketches/</code> (beszkennelt vagy lefotózott vázlatok) mappába kerülnek, a felvétel nevével, például <code>P-016.jpg</code> vagy <code>S-016.jpg</code>. JPG, PNG vagy WebP formátumot használj, nagyjából 1600 px-es hosszabb oldallal; az iPhone HEIC fájljait előbb át kell alakítani. A galéria azonnal megjeleníti a képet, amint a felvétel <code>"image"</code> mezője rá mutat.</p>
+        <p>Minden fotó vagy vázlat egy bejegyzés a <code>data/observations.json</code> fájlban. A koordináták a Rhino-modell koordinátái méterben, így közvetlenül a modellből leolvashatók. Ha a telekmodellen az O épület bármely részére kattintasz, megjelenik a kattintott pont és az elem azonosítója, valamint egy gomb, amely kész bejegyzést másol.</p>
+<pre><code>{
+  "id": "P-016",
+  "type": "photo",            // "photo" (fotó) vagy "sketch" (vázlat)
+  "level": "first",           // "ground" (földszint), "first" (emelet) vagy "roof" (tető)
+  "position": [-12.5, 4.5],   // Rhino x, y: ahol álltál
+  "direction": 180,           // nézési irány alaprajzban, fokban, 0 = +X, az óramutatóval ellentétesen
+  "elements": ["1e994e28-22a0-1f43-b6c0-c39260da81b8"],
+  "title": "Nyugati homlokzat üvegezése",
+  "note": "",
+  "image": "assets/photos/P-016.jpg",
+  "author": "",
+  "date": "2026-10-06"
+}</code></pre>
+      </div>
+    </details>
+  </main>
+
+  <main id="docs" class="topic-body" hidden>
+    <div class="section-head">
+      <h2>Műszaki dokumentáció</h2>
+      <p>Az O épület felmérési terve hét A2-es lapon: helyszínrajz, földszinti és emeleti alaprajz, tetőfelülnézet, A-A és B-B metszet és a négy homlokzat, M 1:100 (a helyszínrajz kb. 1:500). Lapozz a nyilakkal, a bélyegképekkel vagy a ← → billentyűkkel. A rajzra kattintva ott nagyít, görgővel vagy két ujjal tovább nagyíthatsz, húzással mozgathatod; újabb kattintás visszaállítja a teljes lapot. Az eredeti PDF minden lapnál letölthető.</p>
+    </div>
+
+    <section class="doc-show" aria-label="Felmérési terv lapjai">
+      <div class="doc-stage" id="doc-stage" tabindex="0" aria-roledescription="diavetítés" aria-label="Felmérési terv">
+        <div class="doc-view" id="doc-view"><img id="doc-img" alt="" draggable="false"></div>
+        <button type="button" class="doc-nav doc-nav--prev" id="doc-prev" aria-label="Előző lap">‹</button>
+        <button type="button" class="doc-nav doc-nav--next" id="doc-next" aria-label="Következő lap">›</button>
+        <div class="doc-bar">
+          <span class="doc-bar__count" id="doc-count" aria-live="polite"></span>
+          <span class="doc-bar__title"><strong id="doc-title"></strong> <span id="doc-meta"></span></span>
+          <span class="doc-bar__tools" role="group" aria-label="Nagyítás">
+            <button type="button" class="chip" id="doc-out" aria-label="Kicsinyítés">−</button>
+            <span class="doc-bar__zoom" id="doc-zoom">100 %</span>
+            <button type="button" class="chip" id="doc-in" aria-label="Nagyítás">+</button>
+            <button type="button" class="chip" id="doc-fit">Teljes lap</button>
+            <button type="button" class="chip" id="doc-full" hidden>Teljes képernyő</button>
+            <a class="chip" id="doc-pdf" href="#" target="_blank" rel="noopener">PDF ↗</a>
+          </span>
+        </div>
+      </div>
+      <p class="doc-note" id="doc-note"></p>
+      <ol class="doc-thumbs" id="doc-thumbs" aria-label="Lapok"></ol>
+      <p class="hint" id="doc-loading" aria-live="polite"></p>
+      <p class="hint">Felmérési terv · Pannon Egyetem – Hallgatói Hub, O épület, 8200 Veszprém, Wartha Vince utca 1. · Készítették: Mentő Fanni Bianka, Iszlai Zsófia, Szekeres Dávid, Vágó Zsolt Soma.</p>
+    </section>
+  </main>
+
+  <main id="culture" class="topic-body" hidden>
+    <div class="section-head">
+      <h2>Kulturális élet</h2>
+      <p>Veszprém kulturális helyei a város 3D térképén: domborzat, utcák és épületek. A nagy jelölők a csapat által gyűjtött helyek, fotókkal és leírással. A lila épületek az OpenStreetMapben szereplő színházak, múzeumok, galériák, könyvtárak és közösségi házak; ahol a hely nem esik térképezett épületbe, ott lila pont jelöli. Kattints bármelyikre a részletekért. Húzással forgathatsz, jobb gombbal mozgathatsz, görgővel nagyíthatsz.</p>
+    </div>
+
+    <section class="viewer viewer--culture" aria-label="Veszprém 3D térképe a kulturális helyekkel">
+      <div class="stage" id="cul-stage">
+        <canvas id="cul-scene" aria-label="Veszprém 3D térképe"></canvas>
+        <div class="pins pins--osm" id="cul-osm"></div>
+        <div class="pins pins--venues" id="cul-vpins"></div>
+        <div class="pins" id="cul-pins"></div>
+        <div class="stage__loading" id="cul-loading"><span class="spinner" aria-hidden="true"></span><span>A várostérkép betöltése…</span></div>
+        <div class="stage__tag" id="cul-tag" hidden>Kattints a térképen oda, ahol a hely van · Esc: mégse</div>
+        <div class="stage__cam" role="group" aria-label="Nézet">
+          <button type="button" id="cul-cam-campus" class="chip">Campus</button>
+          <button type="button" id="cul-cam-city" class="chip">Város</button>
+          <button type="button" id="cul-cam-region" class="chip">Régió</button>
+        </div>
+      </div>
+
+      <aside class="panel">
+        <div class="block editor-bar" id="cul-editor" hidden>
+          <p class="label">Szerkesztő · a változások mindenkinél mentődnek</p>
+          <div class="row"><button type="button" class="btn" id="cul-new">+ Új hely</button></div>
+          <p class="hint ed-status" id="cul-status" aria-live="polite"></p>
+        </div>
+
+        <div class="block detail" id="cul-detail">
+          <p class="label">Kijelölés</p>
+        </div>
+
+        <details class="block fold" id="cul-osm-fold">
+          <summary class="label">Kulturális intézmények · OpenStreetMap <span class="fold__count" id="cul-osm-count"></span></summary>
+          <div class="chips-row" role="group" aria-label="Intézménytípus" id="cul-osm-kinds"></div>
+          <ol class="records" id="cul-osm-list"></ol>
+          <p class="hint" id="cul-osm-src"></p>
+        </details>
+
+        <fieldset class="block">
+          <legend class="label">Térkép</legend>
+          <label class="toggle"><input type="checkbox" id="cul-show-bld" checked><span class="glyph glyph--box" aria-hidden="true"></span>Épületek</label>
+          <label class="toggle"><input type="checkbox" id="cul-show-roads" checked><span class="glyph glyph--road" aria-hidden="true"></span>Utcák</label>
+          <label class="toggle"><input type="checkbox" id="cul-show-venues" checked><span class="glyph glyph--scale" aria-hidden="true"></span>Esemény-helyszínek (a lenti lépték)</label>
+          <label class="toggle"><input type="checkbox" id="cul-show-osm" checked><span class="glyph glyph--venue" aria-hidden="true"></span>Kulturális intézmények (OSM)</label>
+          <label class="select-row" for="cul-exag">Domborzat
+            <select id="cul-exag"><option value="1">×1 valós lépték</option><option value="1.5" selected>×1.5</option><option value="2.5">×2.5</option></select>
+          </label>
+          <p class="hint">Domborzat: 45 m-es rács (AWS Terrain Tiles). Utcák és épületek: OpenStreetMap; a magasság az OSM-ből származik, ahol meg van adva (sötétebb), máshol becsült.</p>
+        </fieldset>
+      </aside>
+    </section>
+
+    <section class="venues-sec" aria-labelledby="cul-venues-title">
+      <div class="section-head section-head--spaced">
+        <h2 id="cul-venues-title">Események és helyszínek léptékek szerint</h2>
+        <p>A csapat listája Veszprém zenei és kulturális eseményeiről és helyszíneiről, három léptékben: a nagy, időszakos fesztiváloktól a város egész évben nyitott intézményein át egy-egy szubkultúra klubjaiig. A kiválasztott lépték helyszínei számozva a fenti térképen is megjelennek; egy helyszín nevére kattintva a térkép odaviszi a nézetet, a fotóra kattintva a képek nyílnak meg.</p>
+      </div>
+      <div class="sheet-tabs" role="tablist" aria-label="Lépték" id="cul-scales"></div>
+      <div class="venues" id="cul-venues-panel" role="tabpanel">
+        <p class="venues__lead" id="cul-scale-lead"></p>
+        <ol class="venues__list" id="cul-venues"></ol>
+      </div>
+      <dialog class="lightbox" id="cul-vlb" aria-labelledby="cul-vlb-title">
+        <div class="lightbox__media" id="cul-vlb-media"></div>
+        <div class="lightbox__text">
+          <p class="label" id="cul-vlb-kind"></p>
+          <h3 id="cul-vlb-title"></h3>
+          <p id="cul-vlb-note"></p>
+          <div class="lightbox__actions">
+            <button type="button" class="chip" id="cul-vlb-prev" aria-label="Előző fotó">←</button>
+            <button type="button" class="chip" id="cul-vlb-next" aria-label="Következő fotó">→</button>
+            <button type="button" class="chip" id="cul-vlb-close">Bezárás</button>
+          </div>
+        </div>
+      </dialog>
+    </section>
+
+    <div class="section-head section-head--spaced">
+      <h2>Helyek</h2>
+      <p>A térkép összes helye az első fotójával.</p>
+    </div>
+    <ul class="gallery" id="cul-gallery"></ul>
+
+    <dialog class="lightbox" id="cul-lightbox" aria-labelledby="cul-lb-title">
+      <div class="lightbox__media" id="cul-lb-media"></div>
+      <div class="lightbox__text">
+        <p class="label" id="cul-lb-kind"></p>
+        <h3 id="cul-lb-title"></h3>
+        <p id="cul-lb-note"></p>
+        <div class="lightbox__actions">
+          <button type="button" class="chip" id="cul-lb-prev" aria-label="Előző fotó">←</button>
+          <button type="button" class="chip" id="cul-lb-next" aria-label="Következő fotó">→</button>
+          <button type="button" class="chip" id="cul-lb-close">Bezárás</button>
+        </div>
+      </div>
+    </dialog>
+  </main>
+
+  <main id="commuting" class="topic-body" hidden>
+    <div class="section-head">
+      <h2>Célcsoport meghatározás</h2>
+      <p>Kik használják az egyetem környékét, és honnan érkeznek? Négy lépésben: a 2022-es népszámlálás, a kollégiumi férőhelyek, a közösségi közlekedés, majd a következtetés. Ezt egy átlagos tanítási nap szimulációja követi. A szögletes zárójeles számok a lap alján lévő forrásokra utalnak.</p>
+    </div>
+
+    <nav class="steps" aria-label="A bemutató lépései" id="tc-steps">
+      <button type="button" data-step="tc-pop"><b>1</b> Népesség</button>
+      <button type="button" data-step="tc-dorm"><b>2</b> Kollégiumok</button>
+      <button type="button" data-step="tc-pt"><b>3</b> Közlekedés</button>
+      <button type="button" data-step="tc-end"><b>4</b> Következtetés</button>
+      <button type="button" data-step="tc-sim"><b>5</b> Egy tanítási nap</button>
+    </nav>
+
+    <section class="step" id="tc-pop" aria-labelledby="tc-pop-h">
+      <header class="step__head"><span class="step__no">1</span><div><h3 id="tc-pop-h">Népesség – a 2022-es népszámlálás</h3><p>Veszprém fogy és öregszik, de az egyetem körüli városrész kiugróan fiatal.</p></div></header>
+      <div class="step__body">
+        <dl class="tiles">
+          <div><dt>Veszprém lakói, 2022</dt><dd>55&nbsp;910</dd><p>2011-ben 61&nbsp;721, vagyis −9,4&nbsp;%. <a class="ref" href="#tc-src">[1]</a></p></div>
+          <div><dt>Veszprémi járás, 2022</dt><dd>78&nbsp;390</dd><p>A város adja a járás népességének 71&nbsp;%-át. <a class="ref" href="#tc-src">[1]</a></p></div>
+          <div><dt>65 évesek és idősebbek</dt><dd>22,4&nbsp;%</dd><p>15 év alatti 12,5&nbsp;%, 15–64 éves 65,1&nbsp;%. <a class="ref" href="#tc-src">[1]</a></p></div>
+          <div><dt>20–29 évesek</dt><dd>6&nbsp;259</dd><p>A lakosság 11,2&nbsp;%-a; 2011-ben még 8&nbsp;875 fő. <a class="ref" href="#tc-src">[1]</a></p></div>
+        </dl>
+        <figure class="bars" aria-labelledby="tc-age-cap">
+          <figcaption id="tc-age-cap"><b>A 15–39 évesek aránya városrészenként</b><span>Városfejlesztési stratégia, KSH-alapú táblázat, kb. 2019 <a class="ref" href="#tc-src">[5]</a></span></figcaption>
+          <ul>
+            <li class="is-key" style="--v:48.9"><span>Egyetemváros</span><i></i><b>48,9 %</b></li>
+            <li style="--v:36.7"><span>Belváros</span><i></i><b>36,7 %</b></li>
+            <li style="--v:36.1"><span>Füredidomb</span><i></i><b>36,1 %</b></li>
+            <li style="--v:34.8"><span>Cholnokyváros</span><i></i><b>34,8 %</b></li>
+            <li style="--v:32.5"><span>Jeruzsálemhegy</span><i></i><b>32,5 %</b></li>
+            <li style="--v:31.6"><span>Dózsaváros</span><i></i><b>31,6 %</b></li>
+          </ul>
+          <p class="note">A többi városrész arányához képest Egyetemvárosban kb. 1&nbsp;350 fővel több a fiatal felnőtt. Ez nagyjából a körzet kollégiumi férőhelyeinek száma. <a class="ref" href="#tc-src">[5] [6] [11]</a></p>
+        </figure>
+      </div>
+    </section>
+
+    <section class="step" id="tc-dorm" aria-labelledby="tc-dorm-h">
+      <header class="step__head"><span class="step__no">2</span><div><h3 id="tc-dorm-h">Kollégiumi férőhelyek a közelben</h3><p>A veszprémi egyetemi férőhelyek 93&nbsp;%-a az egyetemtől 15 perc sétán belül van.</p></div></header>
+      <div class="step__body">
+        <figure class="bars bars--beds" aria-labelledby="tc-beds-cap">
+          <figcaption id="tc-beds-cap"><b>Férőhelyek kollégiumonként</b><span>Pannon Egyetem Kollégiumi Igazgatóság <a class="ref" href="#tc-src">[6]</a></span></figcaption>
+          <ul>
+            <li class="is-key" style="--v:720"><span>Magister Kollégium <small>József Attila u. 34/2.</small></span><i></i><b>720</b></li>
+            <li class="is-key" style="--v:441"><span>Központi Kollégium <small>Egyetem u. 12.</small></span><i></i><b>441</b></li>
+            <li class="is-key" style="--v:58"><span>Jedlik Ányos Szakkollégium <small>Móricz Zs. u. 8.</small></span><i></i><b>58</b></li>
+            <li style="--v:72"><span>Nereus Kollégium <small>Balatonalmádi</small></span><i></i><b>72</b></li>
+            <li style="--v:21"><span>Harsányi Szakkollégium <small>Várfok</small></span><i></i><b>21</b></li>
+          </ul>
+          <p class="note"><span class="sw sw--key"></span> 15 perc sétán belül: 1&nbsp;219 a 1&nbsp;312 férőhelyből. A tervezett új, 400 fős kollégium (Hóvirág utca, 2025-ös koncepció) tovább növelné ezt. <a class="ref" href="#tc-src">[6] [7]</a></p>
+        </figure>
+        <figure class="stack" aria-labelledby="tc-home-cap">
+          <figcaption id="tc-home-cap"><b>Hol laknak a nappali tagozatos hallgatók?</b><span>Becslés 3&nbsp;754 veszprémi nappalis hallgatóra (alapeset) <a class="ref" href="#tc-src">[9] [11]</a></span></figcaption>
+          <div class="stack__bar" role="img" aria-label="Kollégium a körzetben 29,9 %, albérlet a körzetben 15,4 %, albérlet más városrészben 28,7 %, kollégium a körzeten kívül 2,3 %, bejáró vagy családi otthon 23,7 %">
+            <i style="--v:29.9;--c:var(--tc-1)"></i><i style="--v:15.4;--c:var(--tc-2)"></i><i style="--v:28.7;--c:var(--tc-3)"></i><i style="--v:2.3;--c:var(--tc-4)"></i><i style="--v:23.7;--c:var(--tc-5)"></i>
+          </div>
+          <ul class="stack__key">
+            <li style="--c:var(--tc-1)">Kollégium a körzetben <b>29,9 %</b></li>
+            <li style="--c:var(--tc-2)">Albérlet Egyetemvárosban <b>15,4 %</b></li>
+            <li style="--c:var(--tc-3)">Albérlet más városrészben <b>28,7 %</b></li>
+            <li style="--c:var(--tc-4)">Kollégium a körzeten kívül <b>2,3 %</b></li>
+            <li style="--c:var(--tc-5)">Bejáró / családi otthon <b>23,7 %</b></li>
+          </ul>
+          <p class="note">Tanítási napokon kb. 1&nbsp;700 hallgató lakik a 15 perces körzetben, ez a körzet napközbeni népességének kb. 18&nbsp;%-a. A népszámlálás szerint 2&nbsp;401 veszprémi lakos jár felsőoktatásba, a Pannon Egyetem veszprémi képzési helyein viszont 4&nbsp;440 hallgató tanult (2021/22 ősz). Ez közel kétszeres szám, vagyis a hallgatók jelentős része máshonnan érkezik. <a class="ref" href="#tc-src">[3] [4] [11]</a></p>
+        </figure>
+      </div>
+    </section>
+
+    <section class="step" id="tc-pt" aria-labelledby="tc-pt-h">
+      <header class="step__head"><span class="step__no">3</span><div><h3 id="tc-pt-h">Közösségi közlekedés és vonzáskörzet</h3><p>A városrészek és a környező települések forgalma az egyetem mellett fut össze.</p></div></header>
+      <div class="step__body">
+        <dl class="tiles">
+          <div><dt>Naponta bejáró dolgozó, 2022</dt><dd>23&nbsp;196</dd><p>A Veszprémben dolgozók 51&nbsp;%-a más településről jár be; 2011-ben 13&nbsp;994 fő volt, azóta +66&nbsp;%. <a class="ref" href="#tc-src">[2]</a></p></div>
+          <div><dt>Betöltött munkahely a városban</dt><dd>45&nbsp;814</dd><p>A 29&nbsp;310 foglalkoztatott lakosra 1,56 munkahely jut. <a class="ref" href="#tc-src">[2]</a></p></div>
+          <div><dt>Városi buszvonal az O épület közelében</dt><dd>19 / 30</dd><p>Légvonalban 700&nbsp;m-en belül áll meg; a 851 napi járatból 506 (59&nbsp;%). <a class="ref" href="#tc-src">[8]</a></p></div>
+          <div><dt>Regionális kapcsolat</dt><dd>17 település</dd><p>Ennyi környező településről járnak be hallgatók a modellben busszal, vonattal vagy autóval; vasút Győr, Székesfehérvár és Celldömölk felé. <a class="ref" href="#tc-src">[11]</a></p></div>
+        </dl>
+        <figure class="tc-stops" aria-labelledby="tc-stops-cap">
+          <figcaption id="tc-stops-cap"><b>Megállók az egyetemnél</b><span>VeszprémGO menetrend, 2026. október 6. (kedd); légvonalbeli távolság az O épülettől <a class="ref" href="#tc-src">[8]</a></span></figcaption>
+          <table>
+            <thead><tr><th scope="col">Megálló</th><th scope="col" class="num">Távolság</th><th scope="col">Vonalak</th></tr></thead>
+            <tbody>
+              <tr><td>Stadion</td><td class="num">170 m</td><td>4 · 4A · 8Y · 28</td></tr>
+              <tr><td>Szegfű utca</td><td class="num">270 m</td><td>4 · 4A · 8Y · 28 · 42</td></tr>
+              <tr><td>József Attila utca / egyetemi kollégium</td><td class="num">300 m</td><td>4 · 4A · 42 · 43</td></tr>
+              <tr><td>Stadion utca / Kemecse utca</td><td class="num">310 m</td><td>6 · 11 · 28 · 42 · 43</td></tr>
+              <tr><td>Egyetem utca / ActiCity</td><td class="num">410 m</td><td>4 · 4A · 6 · 8 · 8A · 42 · 43</td></tr>
+              <tr><td>Komakút tér / Pannon Egyetem</td><td class="num">520 m</td><td>2 · 4 · 4A · 6 · 8 · 8A · 8Y · 28 · 42 · 43</td></tr>
+              <tr><td>Petőfi Színház</td><td class="num">690 m</td><td>17 vonal, köztük 1 · 3 · 5 · 10 · 13 · 15</td></tr>
+            </tbody>
+          </table>
+          <p class="note">Helyközi buszjárat a modellben: Balatonalmádi, Balatonfüred, Várpalota, Ajka, Zirc, Székesfehérvár, Herend, Pápa, Tapolca és a környező falvak felől, az autóbusz-állomáson át. Ezek menetrendje feltételezett, a városi buszoké valós. <a class="ref" href="#tc-src">[8] [11]</a></p>
+        </figure>
+      </div>
+    </section>
+
+    <section class="step step--end" id="tc-end" aria-labelledby="tc-end-h">
+      <header class="step__head"><span class="step__no">4</span><div><h3 id="tc-end-h">Következtetés</h3><p>Az egyetem környéke rendkívül aktív zóna, amely nemcsak a városból, hanem a régióból is vonzza az embereket.</p></div></header>
+      <div class="step__body">
+        <ol class="findings">
+          <li><b>Regionális központ.</b> A Veszprémben betöltött munkahelyek felére naponta más településről járnak be, és a bejárók száma 2011 óta kétharmadával nőtt. <a class="ref" href="#tc-src">[2]</a></li>
+          <li><b>A város legfiatalabb része.</b> Egyetemváros lakóinak közel fele 15–39 éves. Tanítási napon kb. 1&nbsp;700 hallgató lakik a körzetben, további kb. 2&nbsp;000 a város más részeiből és 17 környező településről érkezik. <a class="ref" href="#tc-src">[1] [5] [11]</a></li>
+          <li><b>Csomópont.</b> A városi buszvonalak közel kétharmada megáll az O épület közelében, az autóbusz- és a vasútállomás pedig a régiót köti be. <a class="ref" href="#tc-src">[8]</a></li>
+          <li><b>Hiányzó közösségi tér.</b> Ennyi ember ellenére az O épület 500&nbsp;méteres körzetében egyetlen közösségi hely van: a Pannon KözTér, a Pannon Egyetem E épületének földszintjén, 2021 óta, az EKF-program részeként. Nincs nyilvános tér vagy sétálóutca, és nincs piac. Ugyanekkora körben az Óváros tér körül 19 kulturális és közösségi intézmény és 7 tér működik. <a class="ref" href="#tc-src">[12] [13]</a></li>
+        </ol>
+        <figure class="compare" aria-labelledby="tc-osm-cap">
+          <figcaption id="tc-osm-cap"><b>Mi van 500 méteren belül?</b><span>OpenStreetMap-leltár, 2026. október 7. Az O épület és az Óváros tér (1&nbsp;km-re északra) körüli 500&nbsp;m sugarú kör. <a class="ref" href="#tc-src">[12]</a></span></figcaption>
+          <table>
+            <thead><tr><th scope="col">Hely típusa</th><th scope="col">O épület</th><th scope="col">Óváros tér</th></tr></thead>
+            <tbody>
+              <tr class="is-key"><th scope="row">Kulturális és közösségi intézmény <small>színház, múzeum, galéria, könyvtár, közösségi ház</small></th><td style="--v:1"><i></i><b>1</b></td><td style="--v:19"><i></i><b>19</b></td></tr>
+              <tr class="is-key"><th scope="row">Tér, sétálóutca, piac</th><td style="--v:0"><i></i><b>0</b></td><td style="--v:7"><i></i><b>7</b></td></tr>
+              <tr><th scope="row">Vendéglátóhely <small>kávézó, étterem, bár – fogyasztáshoz kötött</small></th><td style="--v:7"><i></i><b>7</b></td><td style="--v:53"><i></i><b>53</b></td></tr>
+              <tr><th scope="row">Park, kert <small>a campus körül főleg névtelen zöldsávok</small></th><td style="--v:7"><i></i><b>7</b></td><td style="--v:9"><i></i><b>9</b></td></tr>
+              <tr><th scope="row">Sportpálya, sportközpont</th><td style="--v:15"><i></i><b>15</b></td><td style="--v:5"><i></i><b>5</b></td></tr>
+              <tr><th scope="row">Játszótér</th><td style="--v:3"><i></i><b>3</b></td><td style="--v:1"><i></i><b>1</b></td></tr>
+            </tbody>
+          </table>
+          <p class="note">A campus környéke a sportról és a zöldfelületről szól, a város kulturális és közösségi élete 0,6–1,1&nbsp;km-re északra, a Belvárosban sűrűsödik. A megyei könyvtár az OSM-ben több elemként szerepel; itt egynek számít. A teljes lista a projekt <span class="mono">tools/osm_public_spaces.csv</span> fájljában van.</p>
+        </figure>
+        <p class="thesis">Ezért egy olyan <b>egyetemi hubot</b> tervezünk az O épületben, amely egyben <b>kulturális központ</b> is: nyitott tér a hallgatóknak, a városlakóknak és a régióból érkezőknek. Ez folytatja Veszprém 2023-as Európa Kulturális Fővárosa szerepét is. <a class="ref" href="#tc-src">[10]</a></p>
+      </div>
+    </section>
+
+    <section class="step step--sim" id="tc-sim" aria-labelledby="tc-sim-h">
+      <header class="step__head"><span class="step__no">5</span><div><h3 id="tc-sim-h">Egy átlagos tanítási nap</h3><p>3&nbsp;754 nappali tagozatos hallgató modellezett útja otthonról a karokra és haza. A kollégiumok kék négyzetek, a feliratokon a szimulált lakóik száma. A városi buszok a valós menetrend szerint közlekednek. Indítsd el a lejátszást, vagy húzd az idősávot.</p></div></header>
+    </section>
+    <div class="blob-host commuter-host" id="commuter-host">
+      <p class="blob-loading" id="commuter-loading"><span class="spinner" aria-hidden="true"></span> A szimuláció betöltése (7 MB)…</p>
+    </div>
+
+    <section class="refs" id="tc-src" aria-labelledby="tc-src-h">
+      <h3 id="tc-src-h">Források</h3>
+      <ol>
+        <li><a href="https://nepszamlalas2022.ksh.hu/adatbazis/#/table/WBS003" target="_blank" rel="noopener">KSH, Népszámlálás 2022 adatbázis – WBS003 „A népesség adatai településenként”</a>: Veszprém (2011, 2022, korcsoportok), Veszprémi járás.</li>
+        <li><a href="https://nepszamlalas2022.ksh.hu/adatbazis/#/table/WBS026" target="_blank" rel="noopener">KSH, Népszámlálás 2022 adatbázis – WBS026 „A foglalkoztatott népesség településenként”</a>, ingázás: helyben foglalkoztatottak, naponta bejárók, eljárók (2011, 2022).</li>
+        <li><a href="https://nepszamlalas2022.ksh.hu/adatbazis/#/table/WBS013" target="_blank" rel="noopener">KSH, Népszámlálás 2022 adatbázis – WBS013 „Az iskolába járó 6 éves és idősebb népesség”</a>: Veszprém vármegye, megyei jogú város sor (a vármegyében ez csak Veszprém), felsőfokú képzésre jár.</li>
+        <li><a href="https://oi.uni-pannon.hu/dokumentumok-kezelese/palyazatok/204-osszes-hallgatoi-kepzes-pe-2021-22-osz-letszam-1" target="_blank" rel="noopener">Pannon Egyetem – Összesített hallgatói adatok, 2021/22 őszi félév</a>: a veszprémi képzési helyek sorainak összege.</li>
+        <li><a href="https://hetfa.hu/wp-content/uploads/2023/02/VMJV_Fenntarthato_varosfejlesztesi_strategiaja_2021-2027.pdf" target="_blank" rel="noopener">Veszprém MJV Fenntartható Városfejlesztési Stratégia 2021–2027</a>: városrészi korösszetétel (KSH-alapú, kb. 2019).</li>
+        <li><a href="https://kollegiumok.uni-pannon.hu/kollegiumok/veszprem" target="_blank" rel="noopener">Pannon Egyetem Kollégiumi Igazgatóság – veszprémi kollégiumok</a>: férőhelyek és címek.</li>
+        <li><a href="https://uni-pannon.hu/hirek/news-oktatas/elkseszult-az-uj-400-fos-veszpremi-kollegium-koncepcioja" target="_blank" rel="noopener">Pannon Egyetem – Elkészült az új, 400 fős veszprémi kollégium koncepciója</a>.</li>
+        <li><a href="https://veszpremgo.hu/" target="_blank" rel="noopener">VeszprémGO (V-Busz) menetrend</a>, 2026. október 6., kedd: 851 járat, 30 vonal, megállók és útvonalak.</li>
+        <li><a href="https://uni-pannon.hu/hirek/news-sajtokozlemenyek/noevekvo-hallgatoi-letszam-es-kutatasi-sikerek-a-pannon-egyetemen" target="_blank" rel="noopener">Pannon Egyetem sajtóközlemény, 2025. november 12.</a>: 6&nbsp;193 aktív hallgató, kb. 40&nbsp;% levelező.</li>
+        <li><a href="https://data.consilium.europa.eu/doc/document/ST-8817-2019-INIT/en/pdf" target="_blank" rel="noopener">Az EU Tanácsa, 8817/19 tájékoztató feljegyzés (2019)</a>: Veszprém, Európa Kulturális Fővárosa 2023.</li>
+        <li>Saját becslés és modell: „Egyetemvaros_demographics_color.xlsx” (alapeset), valamint a szimuláció (OpenStreetMap, VeszprémGO). A lakóhelyek megoszlása, a kollégiumok kihasználtsága és a bejárók települései <b>feltételezések</b>, nem mért adatok.</li>
+        <li><a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap közreműködők (ODbL)</a>, lekérdezés az <a href="https://overpass-api.de/" target="_blank" rel="noopener">Overpass API</a>-n keresztül 2026. október 7-én: 302 elem 2&nbsp;km-en belül az O épülettől. Kategóriák és módszer: <span class="mono">tools/osm_public_spaces.ps1</span>.</li>
+        <li><a href="https://ertektar.veszprembalaton2023.hu/en/location/pannon-public-space" target="_blank" rel="noopener">Veszprém-Balaton 2023 Értéktár – Pannon KözTér</a>: közösségi tér a Pannon Egyetem E épületének földszintjén, 2021 óta.</li>
+      </ol>
+    </section>
+  </main>
+
+  <main id="programme" class="topic-body" hidden>
+    <div class="section-head">
+      <h2>Funkcionális program</h2>
+      <p>A hub terei 500 főre. A blob mérete az alapterület, a hidak a terek közti kapcsolat erősségét mutatják. A blobok húzással átrendezhetők, a jobb oldali panelen szerkeszthetők, az Export fülön letölthetők.</p>
+    </div>
+    <div class="blob-host" id="blob-host">
+      <p class="blob-loading" id="blob-loading"><span class="spinner" aria-hidden="true"></span> A diagram betöltése…</p>
+    </div>
+    <section class="sheets" id="prog-sheets" aria-labelledby="sheets-title">
+      <div class="sheets__head">
+        <h3 id="sheets-title">Programterv lapok</h3>
+        <p>A tervezési program négy lapja. Vidd az egeret egy sorra vagy egy kiemelt térnévre, és a diagramon kiemelődik a tér és a kapcsolatai; kattintásra kijelölődik. A diagramon kijelölt tér sora itt is megjelölődik. A blobok mérete a lapok szerinti terület.</p>
+      </div>
+      <div class="sheet-tabs" role="tablist" aria-label="Programlapok" id="sheet-tabs"></div>
+      <div class="sheet" id="sheet-body" role="tabpanel"></div>
+    </section>
+    <section class="mu" id="mu" aria-labelledby="mu-title">
+      <div class="sheets__head">
+        <h3 id="mu-title">Multifunkcionális terem – négy elrendezés</h3>
+        <p>A földszinti multifunkcionális terem az O épület tartószerkezetében: 3 × 3 mező, 5,4 m-es pillérkiosztás, falak nélkül. Váltáskor a bútorok átrendeződnek, a szék a székhez, az asztal az asztalhoz megy. Lejátszás közben a nézet magától vált, egy gombra kattintva megáll. Az alakok ugyanazok, mint a Helyszín megismerése fülön, itt mozdulatlanul: a csoportjuk, az előadó vagy a vászon felé fordulnak.</p>
+      </div>
+      <div class="stage mu__stage" id="mu-stage">
+        <canvas id="mu-canvas" aria-label="A multifunkcionális terem 3D modellje a kiválasztott elrendezéssel"></canvas>
+        <div class="stage__loading" id="mu-loading"><span class="spinner" aria-hidden="true"></span><span>A jelenetek betöltése…</span></div>
+        <div class="stage__tag" id="mu-tag" aria-live="polite"></div>
+        <div class="stage__cam" role="group" aria-label="Nézet és lejátszás">
+          <button class="chip" type="button" id="mu-play" aria-pressed="true">Szünet</button>
+          <button class="chip is-on" type="button" data-cam="axo">3D</button>
+          <button class="chip" type="button" data-cam="top">Felülnézet</button>
+        </div>
+      </div>
+      <div class="segmented mu__modes" role="radiogroup" aria-label="Elrendezés" id="mu-modes"></div>
+      <p class="mu__desc" id="mu-desc"></p>
+    </section>
+    <section class="mu" id="mf" aria-labelledby="mf-title">
+      <div class="sheets__head">
+        <h3 id="mf-title">Multifunkcionális sportpálya / amfiteátrum – öt használat</h3>
+        <p>A meglévő focipálya (32,6 × 16,4 m, körben 5 m-es labdafogó háló) a helyszíni modellből kivágva, a környező terepszinttel, a paddal és a fával. A programlap öt használata a pályán: sport, rendezvény, pop-up market, kültéri szeminárium és kültéri mozi. A mobil lelátóelemek ívbe rendezve teszik a pályát amfiteátrummá. A bútorok és az alakok ugyanúgy rendeződnek át, mint a teremben.</p>
+      </div>
+      <div class="stage mu__stage" id="mf-stage">
+        <canvas id="mf-canvas" aria-label="A sportpálya 3D modellje a kiválasztott használattal"></canvas>
+        <div class="stage__loading" id="mf-loading"><span class="spinner" aria-hidden="true"></span><span>A jelenetek betöltése…</span></div>
+        <div class="stage__tag" id="mf-tag" aria-live="polite"></div>
+        <div class="stage__cam" role="group" aria-label="Nézet és lejátszás">
+          <button class="chip" type="button" id="mf-play" aria-pressed="true">Szünet</button>
+          <button class="chip is-on" type="button" data-cam="axo">3D</button>
+          <button class="chip" type="button" data-cam="top">Felülnézet</button>
+        </div>
+      </div>
+      <div class="segmented mu__modes mu__modes--5" role="radiogroup" aria-label="Használat" id="mf-modes"></div>
+      <p class="mu__desc" id="mf-desc"></p>
+    </section>
+
+    <section class="refs" id="prog-src" aria-labelledby="prog-src-h">
+      <h3 id="prog-src-h">Források</h3>
+      <ol>
+        <li><a href="https://njt.jog.gov.hu/jogszabaly/2024-1308-30-22" target="_blank" rel="noopener">1308/2024. (X. 9.) Korm. határozat az állami építési beruházások 2035. december 31. napjáig szóló szakpolitikai-ágazati beruházási koncepcióinak elfogadásáról</a> – Nemzeti Jogszabálytár.</li>
+        <li><a href="https://net.jogtar.hu/jogszabaly?docid=a2400280.kor" target="_blank" rel="noopener">280/2024. (IX. 30.) Korm. rendelet a településrendezési és építési követelmények alapszabályzatáról (TÉKA)</a> – Hatályos Jogszabályok Gyűjteménye.</li>
+        <li><a href="https://www.kozep.bme.hu/storage/uploads/e155a2e5-97f6-469c-860d-549fd94bdbfc/kozepulettervezes_segedlet_2025.pdf" target="_blank" rel="noopener">BME Középülettervezési Tanszék: Középülettervezés segédlet, 2025</a> (PDF).</li>
+        <li><a href="https://mcfegganbrown.co.uk/meeting-hse-requirements-how-much-office-space-per-person/" target="_blank" rel="noopener">McFeggan Brown: Office Space Per Person – UK HSE Requirements Explained</a>: munkahelyi alapterület és légtér fejenként.</li>
+        <li><a href="https://www.tandfonline.com/doi/full/10.1080/03075079.2025.2576828" target="_blank" rel="noopener">Weißwange és mtsai (2025): Designing university coworking spaces: a two-study investigation of provider and user perspectives</a>. Studies in Higher Education, Taylor &amp; Francis.</li>
+        <li><a href="https://www.researchgate.net/publication/372267787_Exploring_the_potential_of_coworking_spaces_for_quality_of_working_life_and_wellbeing_a_systematic_review_of_academic_literature" target="_blank" rel="noopener">Exploring the potential of coworking spaces for quality of working life and wellbeing: a systematic review of academic literature</a> – ResearchGate.</li>
+        <li><a href="https://www.sciencedirect.com/science/article/pii/S0264275125002914" target="_blank" rel="noopener">Frenkel – Buchnik (2025): Choosing coworking spaces: Exploring the preferences of coworking space members</a>. Cities, ScienceDirect.</li>
+        <li><a href="https://www.bora.com/en-int/guide/together-you-are-less-alone-meeting-point-communal-kitchen" target="_blank" rel="noopener">Bora: Together you are less alone – meeting point communal kitchen</a>: a közösségi konyha mint találkozóhely.</li>
+        <li><a href="https://content.ces.ncsu.edu/how-to-organize-a-community-garden" target="_blank" rel="noopener">NC State Extension: How to Organize a Community Garden</a>: közösségi kert szervezése.</li>
+        <li><a href="https://semmelweis.hu/hok/en/for-freshers/for-freshers-buildings-of-the-university/" target="_blank" rel="noopener">Semmelweis Egyetem, Hallgatói Önkormányzat: Buildings of the University</a>: egy egyetem épületei az elsőévesek tájékoztatójában.</li>
+      </ol>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <p>Modell: O épület, Rhino felmérési modell (méter). Az elemkódok a modell blokkneveiből származnak.</p>
+  </footer>
+</div>
+
+<script type="module" src="js/i18n.js"></script>
+<script type="module" src="js/context.js"></script>
+<script type="module" src="js/hero.js"></script>
+<script type="module" src="js/topics.js"></script>
+</body>
+</html>

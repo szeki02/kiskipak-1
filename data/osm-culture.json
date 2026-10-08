@@ -1,0 +1,323 @@
+{
+    "meta":  {
+                 "source":  "OpenStreetMap contributors (ODbL), via the Overpass API",
+                 "osmBase":  "2026-10-07T16:45:44Z",
+                 "fetched":  "2026-10-07",
+                 "extent":  [
+                                -4500,
+                                -4000,
+                                6000,
+                                6000
+                            ],
+                 "note":  "Site metres, Building O = 0,0. Built by tools/osm_culture.ps1."
+             },
+    "venues":  [
+                   {
+                       "id":  "node/10556412803",
+                       "name":  "Pannon KözTér",
+                       "kind":  "Közösségi ház",
+                       "x":  310.8,
+                       "y":  322.5,
+                       "addr":  "Egyetem utca 1",
+                       "website":  "https://ekfpontok.hu/oldal/mi-az-a-pannon-kozter",
+                       "wheelchair":  "yes"
+                   },
+                   {
+                       "id":  "node/3439475090",
+                       "name":  "Latinovits Játékszín",
+                       "kind":  "Színház",
+                       "x":  208.8,
+                       "y":  549.5,
+                       "website":  "http://turistautak.hu/poi.php?id=63081"
+                   },
+                   {
+                       "id":  "way/238450757",
+                       "name":  "Eötvös Károly Megyei Könyvtár",
+                       "kind":  "Könyvtár",
+                       "x":  225.2,
+                       "y":  573.7,
+                       "addr":  "Komakút tér 3",
+                       "website":  "https://www.ekmk.hu/hu/",
+                       "hours":  "We-Fr 09:00-18:00",
+                       "wheelchair":  "yes"
+                   },
+                   {
+                       "id":  "way/140048146",
+                       "name":  "Laczkó Dezső Múzeum: Bakonyi Ház",
+                       "kind":  "Múzeum",
+                       "x":  456.8,
+                       "y":  498.2
+                   },
+                   {
+                       "id":  "way/140048145",
+                       "name":  "Laczkó Dezső Múzeum",
+                       "kind":  "Múzeum",
+                       "x":  434.0,
+                       "y":  548.4,
+                       "addr":  "Erzsébet sétány 1",
+                       "website":  "https://www.ldm.hu/",
+                       "hours":  "off"
+                   },
+                   {
+                       "id":  "node/13165764949",
+                       "name":  "CODE Digitális Élményközpont",
+                       "kind":  "Múzeum",
+                       "x":  59.4,
+                       "y":  720.6,
+                       "addr":  "Dózsa György utca 2",
+                       "website":  "https://codeveszprem.hu/",
+                       "hours":  "We-Mo 09:00-18:00",
+                       "operator":  "Veszprém-Balaton 2023 Zrt."
+                   },
+                   {
+                       "id":  "way/152642849",
+                       "name":  "Petőfi Színház",
+                       "kind":  "Színház",
+                       "x":  265.5,
+                       "y":  709.8,
+                       "addr":  "Óvári Ferenc út 2",
+                       "website":  "https://www.petofiszinhaz.hu/"
+                   },
+                   {
+                       "id":  "way/340073659",
+                       "name":  "Hangvilla Multifunkcionális Közösségi Tér",
+                       "kind":  "Színház",
+                       "x":  427.9,
+                       "y":  724.7,
+                       "addr":  "Brusznyai Árpád utca 2"
+                   },
+                   {
+                       "id":  "node/2231916537",
+                       "name":  "Óváros Art Galéria",
+                       "kind":  "Galéria",
+                       "x":  248.9,
+                       "y":  928.0,
+                       "website":  "http://ovarosgaleria.inweb.hu/",
+                       "wheelchair":  "limited"
+                   },
+                   {
+                       "id":  "node/10578716041",
+                       "name":  "Digitális Tudásközpont",
+                       "kind":  "Közösségi ház",
+                       "x":  426.0,
+                       "y":  896.4,
+                       "addr":  "Cserhát lakótelep 8",
+                       "website":  "https://www.digitalis-tudaskozpont.hu/knowledge-center/6",
+                       "operator":  "Veszprém-Balaton 2023 Zrt."
+                   },
+                   {
+                       "id":  "node/3540650467",
+                       "name":  "Mestermű galéria",
+                       "kind":  "Galéria",
+                       "x":  526.5,
+                       "y":  852.8
+                   },
+                   {
+                       "id":  "node/11333198427",
+                       "name":  "f|x|r galéria és médialabor",
+                       "kind":  "Művészeti központ",
+                       "x":  113.4,
+                       "y":  1051.0,
+                       "addr":  "Vár utca 17",
+                       "website":  "https://www.muveszetekhaza.hu/"
+                   },
+                   {
+                       "id":  "node/13167526702",
+                       "name":  "Modern Képtár – Vass László Gyűjtemény",
+                       "kind":  "Galéria",
+                       "x":  153.9,
+                       "y":  1054.7,
+                       "addr":  "Vár utca 3-7",
+                       "website":  "https://www.muveszetekhaza.hu/hu/gyujtemenyek/modern-keptar-vass-laszlo-gyujtemeny"
+                   },
+                   {
+                       "id":  "node/12150195115",
+                       "name":  "Vass Galéria - Cipőtár",
+                       "kind":  "Múzeum",
+                       "x":  149.3,
+                       "y":  1064.7,
+                       "hours":  "We,Th,Su 10:00-18:00; Fr,Sa 10:00-20:00"
+                   },
+                   {
+                       "id":  "node/12150195123",
+                       "name":  "Csikász Galéria",
+                       "kind":  "Művészeti központ",
+                       "x":  127.9,
+                       "y":  1071.9,
+                       "addr":  "Vár utca 17",
+                       "website":  "https://www.muveszetekhaza.hu/",
+                       "hours":  "We-Th,Su 10:00-18:00; Fr-Sa 10:00-20:00"
+                   },
+                   {
+                       "id":  "node/3439475645",
+                       "name":  "Várkapu és Vármúzeum",
+                       "kind":  "Múzeum",
+                       "x":  165.6,
+                       "y":  1071.4,
+                       "website":  "http://turistautak.hu/poi.php?id=17927",
+                       "hours":  "Tu-Sa 10:00-18:00"
+                   },
+                   {
+                       "id":  "node/6168733101",
+                       "name":  "Várbörtön",
+                       "kind":  "Múzeum",
+                       "x":  92.6,
+                       "y":  1098.2
+                   },
+                   {
+                       "id":  "node/6978265006",
+                       "name":  "Tegulárium",
+                       "kind":  "Múzeum",
+                       "x":  -17.4,
+                       "y":  1179.7,
+                       "addr":  "Vár utca 29",
+                       "website":  "https://www.muveszetekhaza.hu/hu/tegularium",
+                       "operator":  "Magyar Építőipari Múzeum",
+                       "wheelchair":  "yes"
+                   },
+                   {
+                       "id":  "node/6727512768",
+                       "name":  "",
+                       "kind":  "Múzeum",
+                       "x":  -663.1,
+                       "y":  1009.4
+                   },
+                   {
+                       "id":  "node/9844454958",
+                       "name":  "Veszprémi Érseki Turisztikai Központ",
+                       "kind":  "Múzeum",
+                       "x":  -19.6,
+                       "y":  1223.4,
+                       "website":  "https://vetk.hu"
+                   },
+                   {
+                       "id":  "node/6168769298",
+                       "name":  "Boldog Gizella Főegyházmegyei Gyűjtemény",
+                       "kind":  "Múzeum",
+                       "x":  -63.9,
+                       "y":  1273.5,
+                       "website":  "https://gizellagyujtemeny.hu/",
+                       "hours":  "May 04-Oct 31 Mo-Su 10:00-18:00"
+                   },
+                   {
+                       "id":  "way/745494927",
+                       "name":  "Szent György-kápolna romjai",
+                       "kind":  "Múzeum",
+                       "x":  -47.6,
+                       "y":  1293.0
+                   },
+                   {
+                       "id":  "way/191774727",
+                       "name":  "Víziközmű múzeum",
+                       "kind":  "Múzeum",
+                       "x":  -447.4,
+                       "y":  1221.1,
+                       "addr":  "Kittenberger Kálmán utca 5-6",
+                       "website":  "https://bakonykarszt.hu/hu/article/vizikozmu-muzeum",
+                       "hours":  "\"by appointment\""
+                   },
+                   {
+                       "id":  "way/1192752780",
+                       "name":  "GyárKert",
+                       "kind":  "Rendezvényhelyszín",
+                       "x":  944.9,
+                       "y":  1045.6,
+                       "addr":  "Jutasi út 3",
+                       "website":  "https://gyarkert.hu/hu/"
+                   },
+                   {
+                       "id":  "node/11163249209",
+                       "name":  "Cholnoky lakótelepi Könyvtár",
+                       "kind":  "Könyvtár",
+                       "x":  1391.3,
+                       "y":  264.8
+                   },
+                   {
+                       "id":  "node/2231992539",
+                       "name":  "Cinema City",
+                       "kind":  "Mozi",
+                       "x":  1226.4,
+                       "y":  1228.2,
+                       "addr":  "Budapest út 20-28",
+                       "hours":  "Mo-Th 14:30-21:00; Fr 14:30-22:00; Sa 10:30-22:00; Su 10:30-21:00",
+                       "wheelchair":  "yes"
+                   },
+                   {
+                       "id":  "node/1778391604",
+                       "name":  "Dózsavárosi Könyvtár",
+                       "kind":  "Könyvtár",
+                       "x":  -521.7,
+                       "y":  2041.2,
+                       "addr":  "Szent István utca 73",
+                       "website":  "https://www.ekmk.hu/hu/"
+                   },
+                   {
+                       "id":  "way/152820963",
+                       "name":  "Agóra Veszprém Kulturális Központ",
+                       "kind":  "Közösségi ház",
+                       "x":  772.2,
+                       "y":  2309.7,
+                       "addr":  "Táborállás park 1",
+                       "website":  "https://agoraveszprem.hu/"
+                   },
+                   {
+                       "id":  "node/6906261024",
+                       "name":  "Március 15. úti könyvtár",
+                       "kind":  "Könyvtár",
+                       "x":  1372.3,
+                       "y":  2239.3,
+                       "addr":  "Március 15. utca 1/a"
+                   },
+                   {
+                       "id":  "node/10556412804",
+                       "name":  "Jutasi KözTér - Érted Ifjúsági Klub",
+                       "kind":  "Közösségi ház",
+                       "x":  1387.2,
+                       "y":  2266.1,
+                       "addr":  "Március 15. utca 2",
+                       "website":  "https://veszpremcssk.hu",
+                       "hours":  "Mo-Tu 10:00-14:00; Th-Fr 14:00-18:00",
+                       "wheelchair":  "yes"
+                   },
+                   {
+                       "id":  "node/13524309622",
+                       "name":  "Veszprémi Főegyházmegyei Könyvtár és Levéltár",
+                       "kind":  "Könyvtár",
+                       "x":  340.6,
+                       "y":  2758.7,
+                       "website":  "https://www.vfkl.hu/"
+                   },
+                   {
+                       "id":  "node/3354795911",
+                       "name":  "",
+                       "kind":  "Könyvtár",
+                       "x":  -2479.3,
+                       "y":  -3381.2,
+                       "website":  "http://turistautak.hu/poi.php?id=77582"
+                   },
+                   {
+                       "id":  "node/12601579452",
+                       "name":  "",
+                       "kind":  "Közösségi ház",
+                       "x":  -1917.5,
+                       "y":  -3773.6,
+                       "website":  "http://www.vamosplebania.hu/"
+                   },
+                   {
+                       "id":  "node/3363317603",
+                       "name":  "VMKK Kádártai Faluház",
+                       "kind":  "Közösségi ház",
+                       "x":  3602.0,
+                       "y":  3901.3,
+                       "operator":  "VMKK"
+                   },
+                   {
+                       "id":  "way/190062188",
+                       "name":  "Nemzedékek Háza",
+                       "kind":  "Közösségi ház",
+                       "x":  5398.8,
+                       "y":  -3077.6,
+                       "addr":  "Petőfi Sándor utca 6"
+                   }
+               ]
+}
