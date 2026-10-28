@@ -242,16 +242,32 @@ function buildStreet(street) {
     // lawn verges close to the ground tone, block paving light, asphalt walks like the shared path
     kerb: monoMat(0.96, off), verge: monoMat(0.79, off), paving: monoMat(0.88, off), 'asphalt-walk': monoMat(0.7, off),
     wall: monoMat(0.66, { side: THREE.DoubleSide }), 'mesh-fence': monoMat(0.25, { side: THREE.DoubleSide, transparent: true, opacity: 0.45, depthWrite: false }),
+    // drainage trench by building N: concrete channel, stone-lined slope, shrubs on the bank
+    concrete: monoMat(0.86, { side: THREE.DoubleSide }), stone: monoMat(0.5, { side: THREE.DoubleSide }), hedge: monoMat(0.5, { flatShading: true }),
   };
-  const by = {};
-  for (const m of street.meshes) (by[m.kind] ||= []).push(meshGeometry(m.mesh).toNonIndexed());
+  const by = {}, sunk = [];
+  for (const m of street.meshes) {
+    const g = meshGeometry(m.mesh).toNonIndexed();
+    (by[m.kind] ||= []).push(g);
+    if (m.group === 'trench') sunk.push(g);
+  }
   for (const [kind, geos] of Object.entries(by)) {
     const g = mergeGeometries(geos);
     g.computeVertexNormals();
     const mesh = new THREE.Mesh(g, mats[kind] || mats.paving);
-    mesh.receiveShadow = true; mesh.castShadow = kind === 'wall' || kind === 'kerb';
+    mesh.receiveShadow = true; mesh.castShadow = kind === 'wall' || kind === 'kerb' || kind === 'hedge';
     if (kind === 'mesh-fence') mesh.renderOrder = 2;
     groups.roads.add(mesh);
+  }
+  // the trench lies below the (coarse) terrain: drawn first into the stencil buffer, it cuts the ground away where it shows
+  if (sunk.length) {
+    const mask = new THREE.Mesh(mergeGeometries(sunk), new THREE.MeshBasicMaterial({
+      colorWrite: false, depthWrite: false, side: THREE.DoubleSide,
+      stencilWrite: true, stencilRef: 1, stencilFunc: THREE.AlwaysStencilFunc, stencilZPass: THREE.ReplaceStencilOp,
+    }));
+    mask.renderOrder = -10;
+    groups.roads.add(mask);
+    for (const mat of [MAT.terrain, MAT.skirt]) Object.assign(mat, { stencilWrite: true, stencilRef: 1, stencilFunc: THREE.NotEqualStencilFunc, stencilWriteMask: 0 });
   }
 }
 
