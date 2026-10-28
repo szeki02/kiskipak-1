@@ -211,8 +211,48 @@ function buildRoads(roads, walkways = []) {
   };
   MAT.road.side = THREE.DoubleSide;
   add(roads.map((p) => ribbon(p, 6, 0.0)).filter(Boolean), MAT.road);
+  // footways sit a kerb above the road (Street View: +0.14 m), with their edges as vertical faces
   const walkMat = monoMat(0.74, { side: THREE.DoubleSide, polygonOffset: true, polygonOffsetFactor: -2, polygonOffsetUnits: -2 });
-  add(walkways.map((w) => ribbon(w.p, w.width, 0.0)).filter(Boolean), walkMat);
+  add(walkways.map((w) => raisedRibbon(w.p, w.width, 0.14, 0.35)).filter(Boolean), walkMat);
+}
+
+// ribbon lifted by `lift` with its two long edges dropped `drop` below the centre line
+function raisedRibbon(p, width, lift, drop) {
+  const top = ribbon(p, width, lift);
+  if (!top) return null;
+  const t = top.attributes.position.array, n = t.length / 6, pos = Array.from(t), idx = Array.from(top.index.array);
+  for (let i = 0; i < n; i++) for (let e = 0; e < 2; e++) pos.push(t[i * 6 + e * 3], t[i * 6 + e * 3 + 1] - lift - drop, t[i * 6 + e * 3 + 2]);
+  const b = 2 * n;   // bottom copy of vertex k is b + k
+  for (let i = 0; i < n - 1; i++) for (let e = 0; e < 2; e++) {
+    const a0 = 2 * i + e, a1 = 2 * (i + 1) + e;
+    idx.push(a0, b + a0, b + a1, a0, b + a1, a1);
+  }
+  const g = new THREE.BufferGeometry();
+  g.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
+  g.setIndex(idx);
+  return g;
+}
+
+// Street cross-sections measured on Street View (tools/street_model.py): kerbs, raised grass verges and sidewalks,
+// the garden walls of the houses opposite. Meshes come in site coordinates with absolute heights.
+function buildStreet(street) {
+  if (!street?.meshes?.length) return;
+  const off = { side: THREE.DoubleSide, polygonOffset: true, polygonOffsetFactor: -1, polygonOffsetUnits: -1 };
+  const mats = {
+    // lawn verges close to the ground tone, block paving light, asphalt walks like the shared path
+    kerb: monoMat(0.96, off), verge: monoMat(0.79, off), paving: monoMat(0.88, off), 'asphalt-walk': monoMat(0.7, off),
+    wall: monoMat(0.66, { side: THREE.DoubleSide }), 'mesh-fence': monoMat(0.25, { side: THREE.DoubleSide, transparent: true, opacity: 0.45, depthWrite: false }),
+  };
+  const by = {};
+  for (const m of street.meshes) (by[m.kind] ||= []).push(meshGeometry(m.mesh).toNonIndexed());
+  for (const [kind, geos] of Object.entries(by)) {
+    const g = mergeGeometries(geos);
+    g.computeVertexNormals();
+    const mesh = new THREE.Mesh(g, mats[kind] || mats.paving);
+    mesh.receiveShadow = true; mesh.castShadow = kind === 'wall' || kind === 'kerb';
+    if (kind === 'mesh-fence') mesh.renderOrder = 2;
+    groups.roads.add(mesh);
+  }
 }
 
 // Trees: crown as a low-poly ellipsoid, trunk as a thin prism. Tree height and
@@ -224,27 +264,40 @@ function treeShape(h, r, cb) {
   const rv = (h - base) / 2;                         // vertical crown radius
   return { rv, crownY: base + rv, trunkH: base + rv * 0.6 };
 }
-// t: canopy-map trees [x, y, z, h, r, ...]; edited: trees reshaped in Rhino [x, y, z, h, r, crownBase, ...]
-function buildTrees(t, edited = []) {
+// t: canopy-map trees [x, y, z, h, r, ...]; edited: trees reshaped in Rhino or surveyed on Street View
+// [x, y, z, h, r, crownBase, ...]; kinds: shape per edited tree (0 broadleaf, 1 columnar poplar, 2 conifer)
+function buildTrees(t, edited = [], kinds = []) {
   const list = [];
-  for (let i = 0; i < t.length; i += 5) list.push([...t.slice(i, i + 5), -1]);
-  for (let i = 0; i < edited.length; i += 6) list.push(edited.slice(i, i + 6));
-  const n = list.length;
-  if (!n) return;
-  const crownGeo = new THREE.IcosahedronGeometry(1, 1);
+  for (let i = 0; i < t.length; i += 5) list.push([...t.slice(i, i + 5), -1, 0]);
+  for (let i = 0; i < edited.length; i += 6) list.push([...edited.slice(i, i + 6), kinds[i / 6] || 0]);
+  if (!list.length) return;
+  // crown shapes, unit size: broadleaf ellipsoid (centred), columnar spindle and conifer cone (base at 0, top at 1)
+  const spindle = new THREE.LatheGeometry([[0, 0], [0.55, 0.06], [0.9, 0.22], [1, 0.42], [0.8, 0.7], [0.42, 0.9], [0, 1]].map(([a, b]) => new THREE.Vector2(a, b)), 8);
+  const cone = new THREE.ConeGeometry(1, 1, 8); cone.translate(0, 0.5, 0);
+  const shapes = [new THREE.IcosahedronGeometry(1, 1), spindle, cone];
   const trunkGeo = new THREE.CylinderGeometry(0.16, 0.24, 1, 6);
   trunkGeo.translate(0, 0.5, 0);
-  const crowns = new THREE.InstancedMesh(crownGeo, MAT.tree, n);
-  const trunks = new THREE.InstancedMesh(trunkGeo, MAT.trunk, n);
   const m = new THREE.Matrix4(), q = new THREE.Quaternion(), s = new THREE.Vector3(), p = new THREE.Vector3();
-  for (let i = 0; i < n; i++) {
-    const [x, y, z, h, r, cb] = list[i];
-    const { rv, crownY, trunkH } = treeShape(h, r, cb);
-    q.setFromAxisAngle(new THREE.Vector3(0, 1, 0), (i * 2.399) % (2 * Math.PI));
-    crowns.setMatrixAt(i, m.compose(p.set(x, z + crownY, -y), q, s.set(r, rv, r)));
-    trunks.setMatrixAt(i, m.compose(p.set(x, z, -y), q, s.set(1, trunkH, 1)));
-  }
-  for (const im of [crowns, trunks]) { im.castShadow = true; im.receiveShadow = true; groups.trees.add(im); }
+  const trunks = new THREE.InstancedMesh(trunkGeo, MAT.trunk, list.length);
+  shapes.forEach((geo, kind) => {
+    const mine = list.map((v, i) => [v, i]).filter(([v]) => v[6] === kind);
+    if (!mine.length) return;
+    const crowns = new THREE.InstancedMesh(geo, MAT.tree, mine.length);
+    mine.forEach(([[x, y, z, h, r, cb], i], k) => {
+      q.setFromAxisAngle(new THREE.Vector3(0, 1, 0), (i * 2.399) % (2 * Math.PI));
+      if (kind === 0) {
+        const { rv, crownY, trunkH } = treeShape(h, r, cb);
+        crowns.setMatrixAt(k, m.compose(p.set(x, z + crownY, -y), q, s.set(r, rv, r)));
+        trunks.setMatrixAt(i, m.compose(p.set(x, z, -y), q, s.set(1, trunkH, 1)));
+      } else {
+        const base = cb >= 0 ? cb : kind === 1 ? 1.2 : 0.3;
+        crowns.setMatrixAt(k, m.compose(p.set(x, z + base, -y), q, s.set(r, h - base, r)));
+        trunks.setMatrixAt(i, m.compose(p.set(x, z, -y), q, s.set(kind === 2 ? 0.6 : 1, base + (h - base) * 0.3, kind === 2 ? 0.6 : 1)));
+      }
+    });
+    crowns.castShadow = true; crowns.receiveShadow = true; groups.trees.add(crowns);
+  });
+  trunks.castShadow = true; trunks.receiveShadow = true; groups.trees.add(trunks);
 }
 
 // Pitches drawn in the Rhino file (tools/site_additions.json). Markings and goals
@@ -948,8 +1001,9 @@ async function boot() {
   buildContours(data.contours);
   buildRoads(data.roads, data.walkways || []);
   buildSurfaces(data.surfaces || []);
+  buildStreet(data.street);
   buildContextBuildings(data.buildings);
-  buildTrees(data.trees || [], data.treesEdited || []);
+  buildTrees(data.trees || [], data.treesEdited || [], data.treesEditedKind || []);
   buildPitches(data.pitches || []);
   buildFence(data.fence);
   buildFurniture(data.furniture);
