@@ -481,6 +481,24 @@ function meshGeometry(m) {
   return g;
 }
 
+// Joined pavement (tools/street_model.py): roads, kerbs, verges, sidewalks, paths and car parks as pieces that meet without
+// gaps or overlaps; z absolute, every edge with a vertical face. Replaces the road / walkway ribbons and car park patches.
+function buildPavement(pav) {
+  const off = (f) => ({ side: THREE.DoubleSide, polygonOffset: true, polygonOffsetFactor: f, polygonOffsetUnits: f });
+  MAT.road.side = THREE.DoubleSide;
+  const mats = {
+    road: MAT.road, kerb: monoMat(0.96, off(-1)), verge: monoMat(0.79, off(-1)), paving: monoMat(0.88, off(-1)), walk: monoMat(0.74, off(-1)),
+    'asphalt-walk': monoMat(0.7, off(-1)), 'carpark-asphalt': monoMat(0.42, off(-2)), 'carpark-pavers': monoMat(0.68, off(-2)), 'carpark-concrete': monoMat(0.88, off(-2)),
+  };
+  for (const m of pav.meshes) {
+    const g = meshGeometry(m.mesh).toNonIndexed();
+    g.computeVertexNormals();
+    const mesh = new THREE.Mesh(g, mats[m.kind] || mats.paving);
+    mesh.receiveShadow = true; mesh.castShadow = m.kind === 'kerb';
+    groups.roads.add(mesh);
+  }
+}
+
 // Car parks seen in the site photos (site_refinements.json), draped on the terrain.
 function buildSurfaces(list) {
   const mats = {
@@ -1015,8 +1033,8 @@ async function boot() {
   data = await fetch(CONTEXT_URL).then((r) => { if (!r.ok) throw new Error(`context.json ${r.status}`); return r.json(); });
   buildTerrain(data.terrain);
   buildContours(data.contours);
-  buildRoads(data.roads, data.walkways || []);
-  buildSurfaces(data.surfaces || []);
+  if (data.pavement?.meshes?.length) buildPavement(data.pavement);
+  else { buildRoads(data.roads, data.walkways || []); buildSurfaces(data.surfaces || []); }
   buildStreet(data.street);
   buildContextBuildings(data.buildings);
   buildTrees(data.trees || [], data.treesEdited || [], data.treesEditedKind || []);
