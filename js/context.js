@@ -375,7 +375,7 @@ const SITE_TO_THREE = new THREE.Matrix4().set(1, 0, 0, 0, 0, 0, 1, 0, 0, -1, 0, 
 function buildFurniture(f) {
   if (!f?.groups?.length) return;
   // grey values per sublayer of 05_LANDSCAPE: timber light, black planters and bins dark; parked cars light / dark
-  const tone = [[/cars \(dark\)/i, 0.24], [/cars \(light\)/i, 0.86], [/pallet/i, 0.8],[/bench/i, 0.62], [/raised bed/i, 0.66], [/planter/i, 0.22], [/sapling/i, 0.74], [/slab|paving/i, 0.85]];
+  const tone = [[/cars \(dark\)/i, 0.24], [/cars \(light\)/i, 0.86], [/pallet/i, 0.8],[/bench/i, 0.62], [/raised bed/i, 0.66], [/planter/i, 0.22], [/sapling/i, 0.74], [/slab|paving/i, 0.85], [/marking|crossing/i, 0.96]];
   const mat = (name) => monoMat((tone.find(([re]) => re.test(name)) || [null, 0.45])[1]);
   const siteGeo = (m) => {
     const g = new THREE.BufferGeometry();
@@ -430,12 +430,17 @@ function buildSurfaces(list) {
 
 // Concrete panel fence along the campus border, laid out in the Rhino file (site_additions.json).
 // Each module: post at its start + stacked panels, scaled along x to the chord; some have 4 panels.
+// Stretches listed in f.styles (Street View) are a stone plinth with stone pillars and iron railings instead.
 function buildFence(f) {
   if (!f || !f.modules?.length) return;
   const concrete = monoMat(0.8);
   const postGeo = meshGeometry(f.parts.post); postGeo.computeVertexNormals();
   const panelGeos = f.parts.panels.map((p) => { const g = meshGeometry(p); g.computeVertexNormals(); return g; });
-  const mods = f.modules.map(([i, x, y, z, ang, sx, panels, sp, ep]) => ({ i, x, y, z, a: THREE.MathUtils.degToRad(ang), sx, panels, sp, ep }));
+  const ranges = (f.styles?.ranges || []).filter((r) => r.kind === 'railing');
+  const isRail = (i) => ranges.some((r) => i >= r.from && i <= r.to);
+  const all0 = f.modules.map(([i, x, y, z, ang, sx, panels, sp, ep]) => ({ i, x, y, z, a: THREE.MathUtils.degToRad(ang), sx, panels, sp, ep }));
+  const mods = all0.filter((m) => !isRail(m.i));
+  const rails = all0.filter((m) => isRail(m.i));
   const posts = [];
   for (const m of mods) {
     if (m.sp) posts.push([m.x, m.y, m.z, m.a]);
@@ -453,6 +458,26 @@ function buildFence(f) {
     list.forEach((m, k) => im.setMatrixAt(k, place(m.x, m.y, m.z, m.a, m.sx)));
     all.push(im);
   });
+  if (rails.length) {
+    // one railing module in its local frame (x along the chord, three y up): plinth, pillar at the start,
+    // top and bottom rails, vertical bars; scaled along x like the panels
+    const R = f.styles.railing || {}, [ph, pw] = R.plinth || [0.4, 0.38], [qw, qh] = R.pillar || [0.46, 1.9];
+    const [r0, r1] = R.rails || [0.55, 1.6], gap = R.bar || 0.13, P = f.pitch;
+    const box = (w, h, d, x, y) => new THREE.BoxGeometry(w, h, d).translate(x, y, 0);
+    const bars = [box(P, 0.04, 0.04, P / 2, r0), box(P, 0.05, 0.05, P / 2, r1)];
+    for (let x = qw / 2 + gap; x < P - qw / 2; x += gap) bars.push(box(0.022, r1 - r0, 0.022, x, (r0 + r1) / 2));
+    const stoneGeo = mergeGeometries([box(P, ph, pw, P / 2, ph / 2), box(qw, qh, qw, 0, qh / 2)]);
+    const ironGeo = mergeGeometries(bars);
+    for (const [g, mat] of [[stoneGeo, monoMat(0.66)], [ironGeo, monoMat(0.18)]]) {
+      const im = new THREE.InstancedMesh(g, mat, rails.length);
+      rails.forEach((m, k) => im.setMatrixAt(k, place(m.x, m.y, m.z, m.a, m.sx)));
+      im.castShadow = true; im.receiveShadow = true; groups.fence.add(im);
+    }
+    const ends = rails.filter((m) => m.ep || !isRail(m.i + 1));   // closing pillar where a railing stretch ends
+    const pe = new THREE.InstancedMesh(box(qw, qh, qw, 0, qh / 2), monoMat(0.66), ends.length);
+    ends.forEach((m, k) => { const L = m.sx * f.pitch; pe.setMatrixAt(k, place(m.x + L * Math.cos(m.a), m.y + L * Math.sin(m.a), m.z, m.a, 1)); });
+    pe.castShadow = true; groups.fence.add(pe);
+  }
   for (const im of all) { im.castShadow = true; im.receiveShadow = true; groups.fence.add(im); }
 }
 
